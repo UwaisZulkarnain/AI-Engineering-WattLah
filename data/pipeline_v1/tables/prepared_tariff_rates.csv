@@ -1,0 +1,6 @@
+rate_id,tariff,component,condition,period,rate,unit,effective_from,effective_to,source_id,page,label_in_source,verified_in_source,rate_rm
+R01,Domestik Am,energy,usage <= 1500 kWh,all,27.03,sen/kWh,2025-07-01,2027-12-31,S01,1,Caj Tenaga - Untuk penggunaan ≤1500 kW,True,0.2703
+R02,Domestik Am,energy,usage > 1500 kWh,all,37.03,sen/kWh,2025-07-01,2027-12-31,S01,1,Caj Tenaga - Untuk penggunaan >1500 kWj,True,0.3703
+R03,Domestik Am,capacity,all kWh,all,4.55,sen/kWh,2025-07-01,2027-12-31,S01,1,Caj Kapasiti - Untuk semua kWj,True,0.0455
+R04,Domestik Am,network,all kWh,all,12.85,sen/kWh,2025-07-01,2027-12-31,S01,1,Caj Rangkaian - Untuk semua kWj,True,0.1285
+R05,Domestik Am,retail,per month,all,10.0,RM/month,2025-07-01,2027-12-31,S01,1,Caj Peruncitan,True,10.0

@@ -1,0 +1,85 @@
+{
+  "pipeline_version": "week3-v1",
+  "generated_at_utc": "2026-11-16T01:13:59.221016+00:00",
+  "data_type": "tables",
+  "configuration": {
+    "method": "curated CSV verified against source PDF text",
+    "scope": "Domestik Am",
+    "verify": true
+  },
+  "processing_method": "typed and verified: 5 Domestik Am rates from S01 page 1, 6 rules from S01, S03, S06",
+  "sources": [
+    {
+      "path": "data/raw/tariff_domestic_rp4.csv",
+      "sha256": "009956648796789fcb674d2582b873d4bc692ef6e769778058232dfbcecf15b0"
+    },
+    {
+      "path": "data/raw/relief_rules.csv",
+      "sha256": "e623eaa92fb11f5bb2694e2b6a812a1927cb5d7271d1890c6d449fbfe0a73939"
+    }
+  ],
+  "outputs": [
+    "data/pipeline_v1/tables/prepared_tariff_rates.csv",
+    "data/pipeline_v1/tables/prepared_relief_rules.csv"
+  ],
+  "source_output_mapping": [
+    {
+      "source": "data/raw/tariff_domestic_rp4.csv",
+      "output": "data/pipeline_v1/tables/prepared_tariff_rates.csv"
+    },
+    {
+      "source": "data/raw/relief_rules.csv",
+      "output": "data/pipeline_v1/tables/prepared_relief_rules.csv"
+    }
+  ],
+  "inspection": {
+    "tariff_domestic_rp4.csv": {
+      "rows": 5,
+      "columns": [
+        "rate_id",
+        "tariff",
+        "component",
+        "condition",
+        "period",
+        "rate",
+        "unit",
+        "effective_from",
+        "effective_to",
+        "source_id",
+        "page",
+        "label_in_source"
+      ],
+      "duplicates": 0
+    },
+    "relief_rules.csv": {
+      "rows": 6,
+      "columns": [
+        "rule_id",
+        "rule",
+        "description",
+        "value",
+        "unit",
+        "applies_to",
+        "effective_from",
+        "effective_to",
+        "source_id",
+        "page",
+        "note"
+      ],
+      "duplicates": 0
+    }
+  },
+  "validation": {
+    "output_count": 2,
+    "output_sha256": [
+      "574c85be7232610af9ef34aa927fce3cb8f0afc9b20966a007849e47745a0483",
+      "1303cd1ce0e5c5a39c670e852999230233f004d4d5c74258b58cd62ca28c3538"
+    ],
+    "output_bytes": [
+      763,
+      1654
+    ]
+  },
+  "source_version": "See data/raw/source_registry.csv",
+  "access_rights": "Public official publications; raw PDFs not redistributed"
+}

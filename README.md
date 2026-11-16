@@ -34,8 +34,10 @@ No accessible tool combines three things:
 ## Project Objectives
 
 - **O1:** To design a bilingual, document grounded assistant that explains Peninsular Malaysia domestic electricity bills using official tariff documents tagged with their effective dates.
-- **O2:** To develop the assistant with date aware retrieval, a deterministic bill calculator tool, and guardrails for source citation, applicable period and personal data.
-- **O3:** To evaluate the assistant on calculation accuracy against reference bills, groundedness, BM and English answer parity, and latency.
+- **O2:** To develop the assistant with date aware retrieval, a deterministic bill calculator tool, and guardrails for source citation, applicable billing period, scope and personal data.
+- **O3:** To evaluate the assistant on calculation accuracy against reference bills, groundedness, BM and English answer parity, scope handling and latency.
+
+Full requirements, evaluation criteria and V1 architecture: [docs/week2_requirements.md](docs/week2_requirements.md), [docs/week2_evaluation_criteria.md](docs/week2_evaluation_criteria.md), [docs/week2_architecture_decisions.md](docs/week2_architecture_decisions.md).
 
 ## Target Users
 
@@ -44,19 +46,28 @@ No accessible tool combines three things:
 
 ## Data Sources
 
-- **Suruhanjaya Tenaga RP4 tariff schedule and media statement (June 2025):** [st.gov.my](https://www.st.gov.my/en/contents/files/highlights/nocategory/2025-06-20/FINAL2_Kenyataan%20Media%20-%20Jadual%20Tarif%20RP4_Finale%20(1).pdf)
-- **TNB press releases on AFA and bill relief:** [15 Sep 2026](https://www.tnb.com.my/assets/press_releases/20260915_23_bi.pdf), [2 Oct 2026](https://www.tnb.com.my/assets/press_releases/20261002_25_bi.pdf)
-- **TNB bill format and service tax pages:** [bill format](https://www.tnb.com.my/residential/billing/understand-your-bill/current-bill-format), [SST](https://www.tnb.com.my/sst)
+Six official documents, listed with URL, issuer, effective period and SHA-256 in [`data/raw/source_registry.csv`](data/raw/source_registry.csv):
 
-Source PDFs are not committed. `data/` will hold a source list with URL, retrieval date and effective date.
+| ID | Document | Issuer, date | Used for |
+|---|---|---|---|
+| S01 | [Jadual Tarif Elektrik, 1 Jul 2025 to 31 Dec 2027](https://www.mytnb.com.my/tariff/PDF/jadual-tarif-elektrik-terkini-2-julai-2025.pdf) | TNB (RP4 schedule), 2 Jul 2025 | Tariff Rate Table |
+| S02 | [Kenyataan Media: Jadual Elektrik Baharu](https://www.mytnb.com.my/tariff/PDF/kenyataan-media-suruhanjaya-tenaga-jadual-elektrik-baharu-20-jun-2025.pdf) | Suruhanjaya Tenaga, 20 Jun 2025 | Knowledge Source |
+| S03 / S04 | AFA mechanism and September 2026 rate ([EN](https://www.tnb.com.my/assets/press_releases/20260915_23_bi.pdf), [BM](https://www.tnb.com.my/assets/press_releases/20260915_23_bm.pdf)) | TNB, 15 Sep 2026 | Knowledge Source, rules |
+| S05 | [Aras perlindungan dinaikkan ke 800kWj](https://www.tnb.com.my/assets/press_releases/20260918_24_bm.pdf) | TNB, 18 Sep 2026 | Knowledge Source |
+| S06 | [Protection threshold raised to 800 kWh](https://www.tnb.com.my/assets/press_releases/20261002_25_bi.pdf) | TNB, 2 Oct 2026 | Knowledge Source, rules |
+
+Source PDFs are not committed. Download them from the URLs above into `data/raw/`; the notebook checks each file against its registered SHA-256.
 
 ## Repository Structure
 
 ```
-docs/         lab reports, scope, system maps
-data/         source list and processed data (no raw copyrighted PDFs)
-src/          application code
-notebooks/    Colab experiments
+docs/                 lab reports, scope, architecture and pipeline diagrams
+data/raw/             source registry and curated rate tables (PDFs downloaded locally, not committed)
+data/processed/       prepared chunks and verified rate tables
+data/pipeline_v1/     V1 pipeline runs with their manifests
+data/week3_manifest.json   lineage: each source to its prepared output, with SHA-256
+src/                  application code
+notebooks/            Colab notebooks (week3_pipeline.ipynb)
 evaluation/   test sets and results
 prompts/      system and task prompts
 ```
@@ -66,3 +77,5 @@ prompts/      system and task prompts
 | Week | Focus | Deliverable | Status |
 |------|-------|-------------|--------|
 | W1 | System map + project scope | README + docs | ✅ |
+| W2 | Requirements, evaluation criteria, V1 architecture | `docs/week2_*` | ✅ |
+| W3 | V1 data pipeline: ingestion, cleaning, chunking, verified rate table, lineage | `notebooks/week3_pipeline.ipynb`, `docs/week3_*`, `data/` | ✅ |

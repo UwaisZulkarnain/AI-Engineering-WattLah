@@ -1,0 +1,90 @@
+{
+  "pipeline_version": "week3-v1",
+  "generated_at_utc": "2026-11-16T01:13:54.125589+00:00",
+  "records": [
+    {
+      "lineage_id": "L01",
+      "source_id": "S02",
+      "source_filename": "st_kenyataan_media_2025-06-20.pdf",
+      "source_sha256": "2728016dd34fdc44f27e263489b320eb96c7bdefc791328e5b0c0426fb01a859",
+      "prepared_output": "data/processed/prepared_text.jsonl",
+      "prepared_sha256": "4a19b6be6419127b2a725eac1ed2198c6b92f5c8b0bdfd80cbeabf5e9dc8865a",
+      "processing_note": "pypdf 5.9.0 layout extraction; cleaned: whitespace, page furniture, ST letterhead and footer, text after end marker; structure-aware chunks; max_chars=1000; overlap_paragraphs=0; page-bounded",
+      "source_version": "published 2025-06-20, retrieved 2026-11-16",
+      "access_rights": "Public official publication; raw file not redistributed in the repo",
+      "status": "Prepared; quality review in Topic 4"
+    },
+    {
+      "lineage_id": "L02",
+      "source_id": "S03",
+      "source_filename": "tnb_20260915_23_bi.pdf",
+      "source_sha256": "778275e866d8245873e539c9b78f62c63bf6ee4949530119da6c7d9e8b4e6fb0",
+      "prepared_output": "data/processed/prepared_text.jsonl",
+      "prepared_sha256": "4a19b6be6419127b2a725eac1ed2198c6b92f5c8b0bdfd80cbeabf5e9dc8865a",
+      "processing_note": "pypdf 5.9.0 layout extraction; cleaned: whitespace, page furniture, ST letterhead and footer, text after end marker; structure-aware chunks; max_chars=1000; overlap_paragraphs=0; page-bounded",
+      "source_version": "published 2026-09-15, retrieved 2026-11-16",
+      "access_rights": "Public official publication; raw file not redistributed in the repo",
+      "status": "Prepared; quality review in Topic 4"
+    },
+    {
+      "lineage_id": "L03",
+      "source_id": "S04",
+      "source_filename": "tnb_20260915_23_bm.pdf",
+      "source_sha256": "836c9b11d20e743db3eeeea692afacc3ab036a1ced2552bc17c30a1620c1d260",
+      "prepared_output": "data/processed/prepared_text.jsonl",
+      "prepared_sha256": "4a19b6be6419127b2a725eac1ed2198c6b92f5c8b0bdfd80cbeabf5e9dc8865a",
+      "processing_note": "pypdf 5.9.0 layout extraction; cleaned: whitespace, page furniture, ST letterhead and footer, text after end marker; structure-aware chunks; max_chars=1000; overlap_paragraphs=0; page-bounded",
+      "source_version": "published 2026-09-15, retrieved 2026-11-16",
+      "access_rights": "Public official publication; raw file not redistributed in the repo",
+      "status": "Prepared; quality review in Topic 4"
+    },
+    {
+      "lineage_id": "L04",
+      "source_id": "S05",
+      "source_filename": "tnb_20260918_24_bm.pdf",
+      "source_sha256": "01346968fd5c7975c80066d7e76deb6f9c8abbfc50a9c757e8136cfe3d87d904",
+      "prepared_output": "data/processed/prepared_text.jsonl",
+      "prepared_sha256": "4a19b6be6419127b2a725eac1ed2198c6b92f5c8b0bdfd80cbeabf5e9dc8865a",
+      "processing_note": "pypdf 5.9.0 layout extraction; cleaned: whitespace, page furniture, ST letterhead and footer, text after end marker; structure-aware chunks; max_chars=1000; overlap_paragraphs=0; page-bounded",
+      "source_version": "published 2026-09-18, retrieved 2026-11-16",
+      "access_rights": "Public official publication; raw file not redistributed in the repo",
+      "status": "Prepared; quality review in Topic 4"
+    },
+    {
+      "lineage_id": "L05",
+      "source_id": "S06",
+      "source_filename": "tnb_20261002_25_bi.pdf",
+      "source_sha256": "3f93b57e4f54e5ded17fdba7942fdd1171e0c74b97c4f15f6963bfa1a0139212",
+      "prepared_output": "data/processed/prepared_text.jsonl",
+      "prepared_sha256": "4a19b6be6419127b2a725eac1ed2198c6b92f5c8b0bdfd80cbeabf5e9dc8865a",
+      "processing_note": "pypdf 5.9.0 layout extraction; cleaned: whitespace, page furniture, ST letterhead and footer, text after end marker; structure-aware chunks; max_chars=1000; overlap_paragraphs=0; page-bounded",
+      "source_version": "published 2026-10-02, retrieved 2026-11-16",
+      "access_rights": "Public official publication; raw file not redistributed in the repo",
+      "status": "Prepared; quality review in Topic 4"
+    },
+    {
+      "lineage_id": "L06",
+      "source_id": "curated (S01)",
+      "source_filename": "tariff_domestic_rp4.csv",
+      "source_sha256": "009956648796789fcb674d2582b873d4bc692ef6e769778058232dfbcecf15b0",
+      "prepared_output": "data/processed/prepared_tariff_rates.csv",
+      "prepared_sha256": "574c85be7232610af9ef34aa927fce3cb8f0afc9b20966a007849e47745a0483",
+      "processing_note": "Curated transcription of S01 page 1 (Domestik Am); typed fields; each rate verified against S01 page 1 text",
+      "source_version": "v1, 2026-11-16",
+      "access_rights": "Own work",
+      "status": "Prepared; quality review in Topic 4"
+    },
+    {
+      "lineage_id": "L07",
+      "source_id": "curated (S01, S03, S06)",
+      "source_filename": "relief_rules.csv",
+      "source_sha256": "e623eaa92fb11f5bb2694e2b6a812a1927cb5d7271d1890c6d449fbfe0a73939",
+      "prepared_output": "data/processed/prepared_relief_rules.csv",
+      "prepared_sha256": "1303cd1ce0e5c5a39c670e852999230233f004d4d5c74258b58cd62ca28c3538",
+      "processing_note": "Curated rules from S01, S03 and S06; typed fields and dates; each rule verified against the evidence text on its cited page",
+      "source_version": "v1, 2026-11-16",
+      "access_rights": "Own work",
+      "status": "Prepared; quality review in Topic 4"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+rule_id,rule,description,value,unit,applies_to,effective_from,effective_to,source_id,page,note
+P01,exemption threshold,"AFA, retail charge and 8% service tax not charged",600,kWh/month,Domestik,2025-07-01,,S03,1,Standing rule. Overridden by P02 for Sep to Dec 2026 usage
+P02,exemption threshold,"AFA, RM10 retail charge and 8% service tax not charged",800,kWh/month,Domestik,2026-09-01,2026-12-31,S06,1,Also stated in S05 page 1 (BM). September credit is pro-rated into the October 2026 bill. Neither source states what applies from 1 January 2027; P01 applying again is inferred from this end date
+P03,retail charge exemption,Retail charge not charged,600,kWh/month,Domestik,2025-07-01,2027-12-31,S01,1,Printed as a note under Domestik Am
+P04,AFA rate,Automatic Fuel Adjustment for the month,3.67,sen/kWh,Domestik,2026-09-01,2026-09-30,S03,2,Positive value is a surcharge. Published monthly; only September 2026 is in the current sources
+P05,service tax,Service tax rate,8,percent,Domestik,2025-07-01,,S03,1,Applies above the exemption threshold
+P06,energy tier boundary,Energy charge rate changes above this usage,1500,kWh/month,Domestik,2025-07-01,2027-12-31,S01,1,
