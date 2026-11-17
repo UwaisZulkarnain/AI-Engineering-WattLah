@@ -1,4 +1,10 @@
 data/raw/*.pdf
+*.pdf.part
+*.zip
 .ipynb_checkpoints/
 __pycache__/
-*.zip
+.vscode/
+Thumbs.db
+desktop.ini
+~$*
+Wattlah_repo_week3/
