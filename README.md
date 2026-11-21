@@ -58,15 +58,23 @@ Six official documents, listed with URL, issuer, effective period and SHA-256 in
 
 Source PDFs are not committed. Download them from the URLs above into `data/raw/`; the notebook checks each file against its registered SHA-256.
 
+## Data Quality Gate (Week 4)
+
+- **Text chunks:** GO WITH CONDITIONS.
+- **Tables:** HOLD until all 14 rule groups are present and the 50 TNB reference bills in [`docs/week4_evidence/tnb_reference_bills.csv`](docs/week4_evidence/tnb_reference_bills.csv) reproduce to the sen.
+- **Open actions:** Add EEI, KWTBB, monthly AFA (Jul 2025 to Nov 2026), service tax base, AFA on all kWh above the threshold, rounding, and billing period split from official TNB sources; add `superseded_for` metadata to S03-p1-c02, S03-p2-c07, S04-p1-c02, and S04-p2-c07; add English official text for all months; add `.gitattributes` for CSV line endings.
+
 ## Repository Structure
 
 ```
 docs/                 lab reports, scope, architecture and pipeline diagrams
+docs/week4_evidence/   audit evidence for the Week 4 report
 data/raw/             source registry and curated rate tables (PDFs downloaded locally, not committed)
 data/processed/       prepared chunks and verified rate tables
 data/pipeline_v1/     V1 pipeline runs with their manifests
 data/week3_manifest.json   lineage: each source to its prepared output, with SHA-256
 src/                  application code
+src/week4_audit.py    reproduces the Week 4 audit counts
 notebooks/            Colab notebooks (week3_pipeline.ipynb)
 evaluation/   test sets and results
 prompts/      system and task prompts
@@ -79,3 +87,4 @@ prompts/      system and task prompts
 | W1 | System map + project scope | README + docs | ✅ |
 | W2 | Requirements, evaluation criteria, V1 architecture | `docs/week2_*` | ✅ |
 | W3 | V1 data pipeline: ingestion, cleaning, chunking, verified rate table, lineage | `notebooks/week3_pipeline.ipynb`, `docs/week3_*`, `data/` | ✅ |
+| W4 | Data quality and bias audit | [`docs/week4_data_quality_report.md`](docs/week4_data_quality_report.md) | ✅ |

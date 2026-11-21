@@ -1,0 +1,16 @@
+chunk_id,observation,decision,action
+S02-p1-c01,Matches S02 p1,Pass,None
+S02-p3-c05,Body matches S02 p3; heading carried from p2 by design,Pass,None
+S06-p2-c04,Body matches S06 p2; heading carried from p1 by design,Pass,None
+S03-p1-c02,"Faithful to source, but states 600 kWh protection while dated Sep 2026, when 800 kWh applies (S05, S06)",Review,Add chunk-level superseded_for metadata
+S03-p2-c07,Same 600 kWh statement as S03-p1-c02,Review,Same
+S04-p1-c02,"BM version of S03-p1-c02, same conflict",Review,Same
+S04-p2-c07,"BM version of S03-p2-c07, same conflict",Review,Same
+S05-p1-c01,No defect found; flagged only because the page-level note was copied to every chunk on the page,Pass,Set status per chunk
+S05-p1-c02,No defect found; same page-level flag,Pass,Set status per chunk
+S05-p1-c03,"Extraction artifact ""ko s bahan"" for ""kos bahan""",Warning,Keep; correct text in next pipeline run
+S06-p1-c01,No defect found; same page-level flag,Pass,Set status per chunk
+S06-p1-c02,"Eligibility table flattened; header row split across cells, rows still readable",Warning,Keep with warning; add the table as curated rows
+S06-p1-c03,No defect found; same page-level flag,Pass,Set status per chunk
+S04-p2-c06,Accurate; energy saving tips repeated in S05-p2-c04 (Jaccard 0.82),Pass (exception),Keep both; handle repeats at retrieval
+S05-p2-c04,Accurate; repeat of S04-p2-c06 content,Pass (exception),Same

@@ -1,0 +1,12 @@
+row_id,value,checked_against,decision
+R01,27.03 sen/kWh,S01 p1 and myTNB tariff page,Pass
+R02,37.03 sen/kWh,S01 p1 and myTNB,Pass
+R03,4.55 sen/kWh,S01 p1 and myTNB,Pass
+R04,12.85 sen/kWh,S01 p1 and myTNB,Pass
+R05,RM10/month,S01 p1 and myTNB,Pass
+P01,600 kWh base threshold,S03 p1,Pass
+P02,"800 kWh, 1 Sep to 31 Dec 2026","S05 p1, S06 p1, myTNB",Pass
+P03,Retail exemption 600 kWh to 31 Dec 2027,S01 p1 note; myTNB now states 800 kWh for Sep to Dec 2026,Review: overlaps P02 with a different value
+P04,AFA Sep 2026 +3.67,"S03 p2, myTNB AFA series",Pass
+P05,Service tax 8%,S03 p1,Warning: base of the tax not defined
+P06,1500 kWh boundary,S01 p1,Pass

@@ -1,0 +1,15 @@
+group_id,required_rule,result,note
+G01,"Energy charge, both tiers",PASS,
+G02,Capacity charge,PASS,
+G03,Network charge,PASS,
+G04,Retail charge amount,PASS,
+G05,1500 kWh tier boundary,PASS,
+G06,"Protection threshold by period (600, 800)",PASS,
+G07,AFA rate for every month Jul 2025 to Nov 2026,FAIL,1 of 17 months
+G08,AFA applies to all kWh once usage is above the threshold,FAIL,not stated in any row
+G09,Service tax rate,PASS,
+G10,Service tax base (charges for kWh above threshold plus retail; all kWh if period under 28 days),FAIL,"P05 note says only ""applies above the exemption threshold"""
+G11,"Energy Efficiency Incentive, 16 bands",FAIL,no row
+G12,KWTBB 1.6% above 300 kWh,FAIL,no row
+G13,Line rounding rule,FAIL,no row
+G14,Billing period split across calendar months,FAIL,no row

@@ -1,0 +1,194 @@
+{
+ "source_hash_match": {
+  "S01": true,
+  "S02": true,
+  "S03": true,
+  "S04": true,
+  "S05": true,
+  "S06": true
+ },
+ "source_pages": {
+  "S01": 7,
+  "S02": 5,
+  "S03": 3,
+  "S04": 3,
+  "S05": 4,
+  "S06": 3
+ },
+ "v1": {
+  "PASS": 44
+ },
+ "v1_n": 44,
+ "empty_effective_to_chunks": 0,
+ "dup_chunk_ids": 0,
+ "exact_dup_texts": 0,
+ "near_dups_jaccard_ge_0.5": [
+  [
+   "S04-p2-c06",
+   "S05-p2-c04",
+   0.82
+  ]
+ ],
+ "dup_table_ids": 0,
+ "acc_min_cov": 0.8974,
+ "acc_chunks_cov_lt_0.98": [
+  "S02-p3-c05",
+  "S02-p3-c06",
+  "S06-p2-c04"
+ ],
+ "acc_numbers_total": 217,
+ "acc_numbers_missing": 0,
+ "pages_total": 18,
+ "pages_no_chunks": [
+  [
+   "S02",
+   5,
+   128
+  ],
+  [
+   "S03",
+   3,
+   278
+  ],
+  [
+   "S04",
+   3,
+   330
+  ],
+  [
+   "S05",
+   3,
+   287
+  ],
+  [
+   "S05",
+   4,
+   299
+  ],
+  [
+   "S06",
+   3,
+   22
+  ]
+ ],
+ "len": [
+  308,
+  709,
+  999,
+  0
+ ],
+ "status": {
+  "ready": 27,
+  "needs_review": 6
+ },
+ "lang": {
+  "ms": 22,
+  "en": 11
+ },
+ "lang_mismatch": [],
+ "pii": {
+  "phone_mobile": [],
+  "ic_number": [],
+  "email": [
+   [
+    "S02-p4-c08",
+    "tnbcareline@tnb.com.my"
+   ],
+   [
+    "S03-p2-c07",
+    "CareLine@mytnb.my"
+   ],
+   [
+    "S04-p2-c07",
+    "CareLine@mytnb.my"
+   ],
+   [
+    "S05-p2-c06",
+    "CareLine@mytnb.my"
+   ],
+   [
+    "S06-p2-c04",
+    "CareLine@myTNB.my."
+   ]
+  ],
+  "long_digit_account": []
+ },
+ "topic_coverage": {
+  "AFA": {
+   "en": 8,
+   "ms": 10
+  },
+  "retail_charge": {
+   "en": 3,
+   "ms": 3
+  },
+  "service_tax": {
+   "en": 3,
+   "ms": 1
+  },
+  "EEI": {
+   "en": 0,
+   "ms": 2
+  },
+  "KWTBB": {
+   "en": 0,
+   "ms": 0
+  },
+  "800_kWh": {
+   "en": 2,
+   "ms": 1
+  },
+  "ToU": {
+   "en": 2,
+   "ms": 3
+  },
+  "billing_period_proration": {
+   "en": 2,
+   "ms": 0
+  }
+ },
+ "chunks_600_overlapping_800_period": [
+  "S03-p1-c02",
+  "S03-p2-c07",
+  "S04-p1-c02",
+  "S04-p2-c07",
+  "S05-p1-c01",
+  "S06-p1-c01",
+  "S06-p1-c02"
+ ],
+ "p03_vs_p02_overlap": [
+  [
+   "P02",
+   "800.0",
+   "2026-09-01",
+   "2026-12-31"
+  ],
+  [
+   "P03",
+   "600.0",
+   "2025-07-01",
+   "2027-12-31"
+  ]
+ ],
+ "afa_months_in_data": [
+  [
+   "2026-09-01",
+   "3.67"
+  ]
+ ],
+ "latest_source_published": "2026-10-02",
+ "v2": {
+  "PASS": 7,
+  "FAIL": 7
+ },
+ "v2_n": 14,
+ "v2_fail": [
+  "G07",
+  "G08",
+  "G10",
+  "G11",
+  "G12",
+  "G13",
+  "G14"
+ ]
+}
