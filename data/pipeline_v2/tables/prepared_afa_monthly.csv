@@ -1,0 +1,21 @@
+month,afa_sen_per_kwh,status,computed_afa_sen_per_kwh,kwie_offset_sen_per_kwh,source_id,also_in,locator,note,verified_in_source
+2025-07,0.00,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2025-08,-1.45,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2025-09,-1.10,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2025-10,-6.50,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2025-11,-8.91,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2025-12,-6.42,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-01,-4.99,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-02,-2.77,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-03,-2.15,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-04,-0.47,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-05,1.38,declared,2.24,-0.86,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate. Part of the computed rate was absorbed by the Electricity Industry Fund (KWIE). Computed rate and KWIE offset from the myTNB tariff page table,True
+2026-06,2.59,declared,3.44,-0.85,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate. Part of the computed rate was absorbed by the Electricity Industry Fund (KWIE). Computed rate and KWIE offset from the myTNB tariff page table,True
+2026-07,3.59,declared,5.55,-1.96,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate. Part of the computed rate was absorbed by the Electricity Industry Fund (KWIE). Computed rate and KWIE offset from the myTNB tariff page table,True
+2026-08,3.80,declared,4.28,-0.48,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate. Part of the computed rate was absorbed by the Electricity Industry Fund (KWIE). Computed rate and KWIE offset from the myTNB tariff page table,True
+2026-09,3.67,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-10,3.61,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-11,3.60,declared,,,S07,S09,afaGraph.data,Rate charged to customers. Negative is a rebate,True
+2026-12,7.98,forecast,,,S09,,FUEL_BY_MONTH,TNB 3 month projection updated 30 Oct 2026. Not used for bills until declared,True
+2027-01,6.23,forecast,,,S09,,FUEL_BY_MONTH,TNB 3 month projection updated 30 Oct 2026. Not used for bills until declared,True
+2027-02,6.27,forecast,,,S09,,FUEL_BY_MONTH,TNB 3 month projection updated 30 Oct 2026. Not used for bills until declared,True

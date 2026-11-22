@@ -1,0 +1,98 @@
+{
+  "pipeline_version": "v2",
+  "generated_at_utc": "2026-11-22T04:04:46.565021+00:00",
+  "configuration": {
+    "pdf_sources": [
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06"
+    ],
+    "chunk_size": 1000,
+    "overlap_paragraphs": 0,
+    "page_bounded": true,
+    "text_corrections": "data/raw/text_corrections.csv",
+    "chunk_overrides": "data/raw/chunk_overrides.csv"
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "path": "data/raw/tnb_jadual_tarif_2025-07-02.pdf",
+      "sha256": "904e5257bc037c8286de0ba29af3bba6f00667e2d49b28e4f9f6d5b2ed145869"
+    },
+    {
+      "source_id": "S02",
+      "path": "data/raw/st_kenyataan_media_2025-06-20.pdf",
+      "sha256": "2728016dd34fdc44f27e263489b320eb96c7bdefc791328e5b0c0426fb01a859"
+    },
+    {
+      "source_id": "S03",
+      "path": "data/raw/tnb_20260915_23_bi.pdf",
+      "sha256": "778275e866d8245873e539c9b78f62c63bf6ee4949530119da6c7d9e8b4e6fb0"
+    },
+    {
+      "source_id": "S04",
+      "path": "data/raw/tnb_20260915_23_bm.pdf",
+      "sha256": "836c9b11d20e743db3eeeea692afacc3ab036a1ced2552bc17c30a1620c1d260"
+    },
+    {
+      "source_id": "S05",
+      "path": "data/raw/tnb_20260918_24_bm.pdf",
+      "sha256": "01346968fd5c7975c80066d7e76deb6f9c8abbfc50a9c757e8136cfe3d87d904"
+    },
+    {
+      "source_id": "S06",
+      "path": "data/raw/tnb_20261002_25_bi.pdf",
+      "sha256": "3f93b57e4f54e5ded17fdba7942fdd1171e0c74b97c4f15f6963bfa1a0139212"
+    },
+    {
+      "source_id": "S07",
+      "path": "data/raw/mytnb_tariff_en_2026-11-22.json",
+      "sha256": "aa2aea3502e84ff6a0d0e63d3940d26f1001b14a37bcf7fa104515dafa9304c3"
+    },
+    {
+      "source_id": "S08",
+      "path": "data/raw/mytnb_tariff_bm_2026-11-22.json",
+      "sha256": "b7f2c8a08d7881c4fb80da03edc6722808e3315a0730fdd40b20eb4bc637e6a8"
+    },
+    {
+      "source_id": "S09",
+      "path": "data/raw/mytnb_rates_2026-11-22.js",
+      "sha256": "a6e8c7904eb47ce00fd8ec3105dc89b5294d63c0095118f150a2868f96af428d"
+    },
+    {
+      "source_id": "S10",
+      "path": "data/raw/mytnb_calculator_newdomestic_2026-11-22.js",
+      "sha256": "f6904c183a473f648b3f1d7f4bcf297e6942b1309efc9118de087f2ec9b51ff7"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "data/pipeline_v2/documents/prepared_text.jsonl",
+      "sha256": "ef73d3a70cb11e10d7a00a3291de8dc306ade6ff4cdc12dd320ef6524b12d605",
+      "rows": 59
+    },
+    {
+      "path": "data/pipeline_v2/tables/prepared_tariff_rates.csv",
+      "sha256": "b5e1316dc4c0c81575b7cc9e37811e01d0f47c7608f1f20b8bca71be386715bc",
+      "rows": 5
+    },
+    {
+      "path": "data/pipeline_v2/tables/prepared_charge_rules.csv",
+      "sha256": "03515e09120fb4a0eca46dd2ab3456bc83cbcc36b830da37ead786f09a1016e5",
+      "rows": 12
+    },
+    {
+      "path": "data/pipeline_v2/tables/prepared_afa_monthly.csv",
+      "sha256": "076ef8ccab212d23d521ebe775b80f2fc93e932dc11b242d29cae4014539c957",
+      "rows": 20
+    },
+    {
+      "path": "data/pipeline_v2/tables/prepared_eei_tiers.csv",
+      "sha256": "6ad5da07f00ce7bea6bb5913b4e0c6196f0fd720f750d94640c97ca1a7e9489d",
+      "rows": 16
+    }
+  ],
+  "note": "text files written with LF; Week 3 manifest raw CSV hashes were CRLF-based (Week 4 finding)"
+}

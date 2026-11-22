@@ -8,3 +8,6 @@ Thumbs.db
 desktop.ini
 ~$*
 Wattlah_repo_week3/
+.venv/
+data/raw/*.json
+data/raw/*.js

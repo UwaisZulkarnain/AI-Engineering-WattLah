@@ -1,0 +1,65 @@
+case_id,origin,billing_start,billing_end,kwh,scenario,energy_rm,capacity_rm,network_rm,afa_rm,retail_rm,eei_rm,service_tax_rm,kwtbb_rm,total_rm,source_ids,note
+RB01,tnb_calculator,2025-08-01,2025-08-31,150,base,40.55,6.83,19.28,0.00,0.00,-37.50,0.00,0.00,29.16,S09;S10,Full calendar month
+RB02,tnb_calculator,2025-08-01,2025-08-31,300,base,81.09,13.65,38.55,0.00,0.00,-67.50,0.00,0.00,65.79,S09;S10,Full calendar month
+RB03,tnb_calculator,2025-08-01,2025-08-31,301,base,81.36,13.70,38.68,0.00,0.00,-63.21,0.00,1.13,71.66,S09;S10,Full calendar month
+RB04,tnb_calculator,2025-08-01,2025-08-31,600,base,162.18,27.30,77.10,0.00,0.00,-54.00,0.00,3.40,215.98,S09;S10,Full calendar month
+RB05,tnb_calculator,2025-08-01,2025-08-31,601,base,162.45,27.35,77.23,-8.71,10.00,-45.08,0.83,3.55,227.62,S09;S10,Full calendar month
+RB06,tnb_calculator,2025-08-01,2025-08-31,700,base,189.21,31.85,89.95,-10.15,10.00,-38.50,3.80,4.36,280.52,S09;S10,Full calendar month
+RB07,tnb_calculator,2025-08-01,2025-08-31,800,base,216.24,36.40,102.80,-11.60,10.00,-32.00,7.04,5.18,334.06,S09;S10,Full calendar month
+RB08,tnb_calculator,2025-08-01,2025-08-31,801,base,216.51,36.45,102.93,-11.61,10.00,-20.03,7.31,5.37,346.93,S09;S10,Full calendar month
+RB09,tnb_calculator,2025-08-01,2025-08-31,1000,base,270.30,45.50,128.50,-14.50,10.00,-5.00,14.39,7.03,456.22,S09;S10,Full calendar month
+RB10,tnb_calculator,2025-08-01,2025-08-31,1001,base,270.57,45.55,128.63,-14.51,10.00,0.00,14.59,7.12,461.95,S09;S10,Full calendar month
+RB11,tnb_calculator,2025-08-01,2025-08-31,1500,base,405.45,68.25,192.75,-21.75,10.00,0.00,31.75,10.66,697.11,S09;S10,Full calendar month
+RB12,tnb_calculator,2025-08-01,2025-08-31,1501,base,555.82,68.30,192.88,-21.76,10.00,0.00,38.99,13.07,857.30,S09;S10,Full calendar month
+RB13,tnb_calculator,2025-08-01,2025-08-31,2000,base,740.60,91.00,257.00,-29.00,10.00,0.00,60.14,17.42,1147.16,S09;S10,Full calendar month
+RB14,tnb_calculator,2026-02-01,2026-02-28,150,base,40.55,6.83,19.28,0.00,0.00,-37.50,0.00,0.00,29.16,S09;S10,Full calendar month
+RB15,tnb_calculator,2026-02-01,2026-02-28,300,base,81.09,13.65,38.55,0.00,0.00,-67.50,0.00,0.00,65.79,S09;S10,Full calendar month
+RB16,tnb_calculator,2026-02-01,2026-02-28,301,base,81.36,13.70,38.68,0.00,0.00,-63.21,0.00,1.13,71.66,S09;S10,Full calendar month
+RB17,tnb_calculator,2026-02-01,2026-02-28,600,base,162.18,27.30,77.10,0.00,0.00,-54.00,0.00,3.40,215.98,S09;S10,Full calendar month
+RB18,tnb_calculator,2026-02-01,2026-02-28,601,base,162.45,27.35,77.23,-16.65,10.00,-45.08,0.83,3.55,219.68,S09;S10,Full calendar month
+RB19,tnb_calculator,2026-02-01,2026-02-28,700,base,189.21,31.85,89.95,-19.39,10.00,-38.50,3.69,4.36,271.17,S09;S10,Full calendar month
+RB20,tnb_calculator,2026-02-01,2026-02-28,800,base,216.24,36.40,102.80,-22.16,10.00,-32.00,6.83,5.18,323.29,S09;S10,Full calendar month
+RB21,tnb_calculator,2026-02-01,2026-02-28,801,base,216.51,36.45,102.93,-22.19,10.00,-20.03,7.10,5.37,336.14,S09;S10,Full calendar month
+RB22,tnb_calculator,2026-02-01,2026-02-28,1000,base,270.30,45.50,128.50,-27.70,10.00,-5.00,13.97,7.03,442.60,S09;S10,Full calendar month
+RB23,tnb_calculator,2026-02-01,2026-02-28,1001,base,270.57,45.55,128.63,-27.73,10.00,0.00,14.16,7.12,448.30,S09;S10,Full calendar month
+RB24,tnb_calculator,2026-02-01,2026-02-28,1500,base,405.45,68.25,192.75,-41.55,10.00,0.00,30.80,10.66,676.36,S09;S10,Full calendar month
+RB25,tnb_calculator,2026-02-01,2026-02-28,1501,base,555.82,68.30,192.88,-41.58,10.00,0.00,38.04,13.07,836.53,S09;S10,Full calendar month
+RB26,tnb_calculator,2026-02-01,2026-02-28,2000,base,740.60,91.00,257.00,-55.40,10.00,0.00,58.66,17.42,1119.28,S09;S10,Full calendar month
+RB27,tnb_calculator,2026-08-01,2026-08-31,301,base,81.36,13.70,38.68,0.00,0.00,-63.21,0.00,1.13,71.66,S09;S10,Full calendar month
+RB28,tnb_calculator,2026-08-01,2026-08-31,600,base,162.18,27.30,77.10,0.00,0.00,-54.00,0.00,3.40,215.98,S09;S10,Full calendar month
+RB29,tnb_calculator,2026-08-01,2026-08-31,601,base,162.45,27.35,77.23,22.84,10.00,-45.08,0.83,3.55,259.17,S09;S10,Full calendar month
+RB30,tnb_calculator,2026-08-01,2026-08-31,700,base,189.21,31.85,89.95,26.60,10.00,-38.50,4.22,4.36,317.69,S09;S10,Full calendar month
+RB31,tnb_calculator,2026-08-01,2026-08-31,800,base,216.24,36.40,102.80,30.40,10.00,-32.00,7.88,5.18,376.90,S09;S10,Full calendar month
+RB32,tnb_calculator,2026-08-01,2026-08-31,801,base,216.51,36.45,102.93,30.44,10.00,-20.03,8.15,5.37,389.82,S09;S10,Full calendar month
+RB33,tnb_calculator,2026-08-01,2026-08-31,1000,base,270.30,45.50,128.50,38.00,10.00,-5.00,16.07,7.03,510.40,S09;S10,Full calendar month
+RB34,tnb_calculator,2026-08-01,2026-08-31,1001,base,270.57,45.55,128.63,38.04,10.00,0.00,16.27,7.12,516.18,S09;S10,Full calendar month
+RB35,tnb_calculator,2026-08-01,2026-08-31,1500,base,405.45,68.25,192.75,57.00,10.00,0.00,35.53,10.66,779.64,S09;S10,Full calendar month
+RB36,tnb_calculator,2026-08-01,2026-08-31,1501,base,555.82,68.30,192.88,57.04,10.00,0.00,42.77,13.07,939.88,S09;S10,Full calendar month
+RB37,tnb_calculator,2026-08-01,2026-08-31,2000,base,740.60,91.00,257.00,76.00,10.00,0.00,66.02,17.42,1258.04,S09;S10,Full calendar month
+RB38,tnb_calculator,2026-10-01,2026-10-31,150,base,40.55,6.83,19.28,0.00,0.00,-37.50,0.00,0.00,29.16,S09;S10,Full calendar month
+RB39,tnb_calculator,2026-10-01,2026-10-31,300,base,81.09,13.65,38.55,0.00,0.00,-67.50,0.00,0.00,65.79,S09;S10,Full calendar month
+RB40,tnb_calculator,2026-10-01,2026-10-31,301,base,81.36,13.70,38.68,0.00,0.00,-63.21,0.00,1.13,71.66,S09;S10,Full calendar month
+RB41,tnb_calculator,2026-10-01,2026-10-31,600,base,162.18,27.30,77.10,0.00,0.00,-54.00,0.00,3.40,215.98,S09;S10,Full calendar month
+RB42,tnb_calculator,2026-10-01,2026-10-31,601,base,162.45,27.35,77.23,0.00,0.00,-45.08,0.00,3.55,225.50,S09;S10,Full calendar month
+RB43,tnb_calculator,2026-10-01,2026-10-31,700,base,189.21,31.85,89.95,0.00,0.00,-38.50,0.00,4.36,276.87,S09;S10,Full calendar month
+RB44,tnb_calculator,2026-10-01,2026-10-31,800,base,216.24,36.40,102.80,0.00,0.00,-32.00,0.00,5.18,328.62,S09;S10,Full calendar month
+RB45,tnb_calculator,2026-10-01,2026-10-31,801,base,216.51,36.45,102.93,28.92,10.00,-20.03,0.84,5.37,380.99,S09;S10,Full calendar month
+RB46,tnb_calculator,2026-10-01,2026-10-31,1000,base,270.30,45.50,128.50,36.10,10.00,-5.00,8.41,7.03,500.84,S09;S10,Full calendar month
+RB47,tnb_calculator,2026-10-01,2026-10-31,1001,base,270.57,45.55,128.63,36.14,10.00,0.00,8.53,7.12,506.54,S09;S10,Full calendar month
+RB48,tnb_calculator,2026-10-01,2026-10-31,1500,base,405.45,68.25,192.75,54.15,10.00,0.00,27.70,10.66,768.96,S09;S10,Full calendar month
+RB49,tnb_calculator,2026-10-01,2026-10-31,1501,base,555.82,68.30,192.88,54.19,10.00,0.00,33.35,13.07,927.61,S09;S10,Full calendar month
+RB50,tnb_calculator,2026-10-01,2026-10-31,2000,base,740.60,91.00,257.00,72.20,10.00,0.00,56.52,17.42,1244.74,S09;S10,Full calendar month
+RB51,tnb_calculator,2026-08-15,2026-09-14,150,base,40.54,6.82,19.28,0.00,0.00,-37.50,0.00,0.00,29.14,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB52,tnb_calculator,2026-08-15,2026-09-14,300,base,81.09,13.65,38.55,0.00,0.00,-67.51,0.00,0.00,65.78,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB53,tnb_calculator,2026-08-15,2026-09-14,301,base,81.36,13.70,38.68,0.00,0.00,-63.21,0.00,1.13,71.66,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB54,tnb_calculator,2026-08-15,2026-09-14,600,base,162.18,27.30,77.10,0.00,0.00,-54.00,0.00,3.40,215.98,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB55,tnb_calculator,2026-08-15,2026-09-14,601,base,162.45,27.35,77.23,12.54,5.48,-45.09,0.47,3.55,243.98,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB56,tnb_calculator,2026-08-15,2026-09-14,700,base,189.21,31.85,89.95,14.59,5.48,-38.51,2.32,4.36,299.25,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB57,tnb_calculator,2026-08-15,2026-09-14,800,base,216.24,36.40,102.80,16.68,5.48,-32.00,4.33,5.18,355.11,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB58,tnb_calculator,2026-08-15,2026-09-14,801,base,216.51,36.44,102.93,29.97,10.00,-20.04,4.86,5.37,386.04,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB59,tnb_calculator,2026-08-15,2026-09-14,1000,base,270.30,45.50,128.50,37.41,10.00,-5.02,12.63,7.03,506.35,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB60,tnb_calculator,2026-08-15,2026-09-14,1001,base,270.57,45.55,128.63,37.45,10.00,0.00,12.79,7.12,512.11,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB61,tnb_calculator,2026-08-15,2026-09-14,1500,base,405.45,68.25,192.75,56.12,10.00,0.00,32.02,10.66,775.25,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB62,tnb_calculator,2026-08-15,2026-09-14,1501,base,555.82,68.30,192.88,56.15,10.00,0.00,38.55,13.07,934.77,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB63,tnb_calculator,2026-08-15,2026-09-14,2000,base,740.60,91.00,257.00,74.83,10.00,0.00,61.77,17.42,1252.62,S09;S10,Spans the 600 to 800 kWh threshold change on 1 Sep 2026
+RB64,st_example,2025-07-01,2025-07-31,150,base,40.55,6.83,19.28,0.00,0.00,-37.50,0.00,0.00,29.16,S02,"ST worked example, S02 page 5 (image). Period not stated; July 2025 used because AFA was 0.00"

@@ -106,6 +106,8 @@ Same cleaned text from S02 to S06 for every configuration. "Rules kept" counts 1
 1. **The 1 January 2027 reversion is not in any official source used here.** RAI1 and the PERIOD test set in Week 2 assume it. S05 and S06 only say the 800 kWh relief runs until 31 December 2026. P01 applying again afterwards is an inference from that end date. An official statement is needed before PERIOD cases test it.
 2. **The Energy Efficiency Incentive is missing from the rate table.** S02 says households using up to 1,000 kWh get it, and S02's appendix example shows -25.00 sen/kWh at 150 kWh. The tier table is not in any current source, so FR1 bills would be wrong for most households until it is added. To be sourced in Topic 4.
 3. **Only one AFA month is sourced (September 2026).** REF-CALC needs rebate and surcharge months; each month needs its own official notice in the registry.
+**Status, 22 November 2026:** findings 1 to 3 are resolved. 1: Week 2 v1.1 drops the reversion and shows both 2027 scenarios (ADR7). 2 and 3: EEI bands and all AFA months from Jul 2025 to Nov 2026 are sourced from myTNB (S07 to S10) after the Week 4 audit ([week4_data_quality_report.md](week4_data_quality_report.md)).
+
 4. **ToU off-peak public holidays disagree across sources:** S02 says nothing, S03 says "Public Holidays", S06 says "selected Public Holidays". ToU is out of V1 scope, so this is logged, not resolved.
 
 ## 9. Engineering Checklist (Lecture Slide 18)

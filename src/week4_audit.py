@@ -1,3 +1,5 @@
+"""Reproduces the Week 4 audit (commit 83d4629) on the Week 3 data; S07 to S10 were added later."""
+
 import csv
 import hashlib
 import json
@@ -48,15 +50,20 @@ def main():
             failures.append(label)
 
     registry = read_csv(RAW / "source_registry.csv")
-    sources = {row["source_id"]: row for row in registry}
+    week4_registry = [
+        row
+        for row in registry
+        if row["source_id"] in {"S01", "S02", "S03", "S04", "S05", "S06"}
+    ]
+    sources = {row["source_id"]: row for row in week4_registry}
     pdfs = sorted(RAW.glob("*.pdf"))
     pdf_matches = sum(
         1
-        for source in registry
+        for source in week4_registry
         if (RAW / source["filename"]).is_file()
         and sha256((RAW / source["filename"]).read_bytes()) == source["sha256"]
     )
-    check("Source PDF hashes", (pdf_matches, len(registry), len(pdfs)), (6, 6, 6))
+    check("Source PDF hashes", (pdf_matches, len(week4_registry), len(pdfs)), (6, 6, 6))
 
     chunks = [
         json.loads(line)
@@ -138,7 +145,7 @@ def main():
     check("Near-duplicate pair IDs", near_ids, EXPECTED_NEAR_DUPLICATES)
 
     pdf_pages = {}
-    for source in registry:
+    for source in week4_registry:
         reader = PdfReader(str(RAW / source["filename"]))
         pdf_pages[source["source_id"]] = [
             (
@@ -168,7 +175,7 @@ def main():
     }
     uncovered = [
         (source["source_id"], page)
-        for source in registry
+        for source in week4_registry
         if source["source_id"] in {"S02", "S03", "S04", "S05", "S06"}
         for page in range(1, int(source["pages"]) + 1)
         if (source["source_id"], page) not in covered_pages

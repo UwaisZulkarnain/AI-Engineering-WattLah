@@ -8,7 +8,7 @@
 
 ## Problem Statement
 
-Since July 2025, a domestic TNB bill combines energy, capacity, network and retail charges, service tax, and an Automatic Fuel Adjustment (AFA) that changes every month. On top of that, relief thresholds change at short notice. When a bill rises, households cannot easily tell whether the cause is usage, the AFA, or crossing a threshold.
+Since July 2025, a domestic TNB bill combines energy, capacity, network and retail charges, an Energy Efficiency Incentive, a 1.6% Renewable Energy Fund levy (KWTBB), service tax, and an Automatic Fuel Adjustment (AFA) that changes every month. On top of that, relief thresholds change at short notice. When a bill rises, households cannot easily tell whether the cause is usage, the AFA, or crossing a threshold.
 
 General chatbots go out of date and can get the arithmetic wrong, while calculators give a number without explaining it. Wattlah combines retrieval over dated official documents with a deterministic calculator, so it can explain the change correctly and show its working. The AI handles what rules cannot: free form questions in BM, English or a mix of both, matched to the right rule for the right billing month.
 
@@ -37,7 +37,7 @@ No accessible tool combines three things:
 - **O2:** To develop the assistant with date aware retrieval, a deterministic bill calculator tool, and guardrails for source citation, applicable billing period, scope and personal data.
 - **O3:** To evaluate the assistant on calculation accuracy against reference bills, groundedness, BM and English answer parity, scope handling and latency.
 
-Full requirements, evaluation criteria and V1 architecture: [docs/week2_requirements.md](docs/week2_requirements.md), [docs/week2_evaluation_criteria.md](docs/week2_evaluation_criteria.md), [docs/week2_architecture_decisions.md](docs/week2_architecture_decisions.md).
+Full requirements, evaluation criteria and architecture (V1 in Week 2, [V2](docs/architecture_v2.png) after the Week 4 audit): [docs/week2_requirements.md](docs/week2_requirements.md), [docs/week2_evaluation_criteria.md](docs/week2_evaluation_criteria.md), [docs/week2_architecture_decisions.md](docs/week2_architecture_decisions.md).
 
 ## Target Users
 
@@ -46,39 +46,51 @@ Full requirements, evaluation criteria and V1 architecture: [docs/week2_requirem
 
 ## Data Sources
 
-Six official documents, listed with URL, issuer, effective period and SHA-256 in [`data/raw/source_registry.csv`](data/raw/source_registry.csv):
+Ten official sources, listed with URL, issuer, effective period and SHA-256 in [`data/raw/source_registry.csv`](data/raw/source_registry.csv):
 
 | ID | Document | Issuer, date | Used for |
 |---|---|---|---|
-| S01 | [Jadual Tarif Elektrik, 1 Jul 2025 to 31 Dec 2027](https://www.mytnb.com.my/tariff/PDF/jadual-tarif-elektrik-terkini-2-julai-2025.pdf) | TNB (RP4 schedule), 2 Jul 2025 | Tariff Rate Table |
-| S02 | [Kenyataan Media: Jadual Elektrik Baharu](https://www.mytnb.com.my/tariff/PDF/kenyataan-media-suruhanjaya-tenaga-jadual-elektrik-baharu-20-jun-2025.pdf) | Suruhanjaya Tenaga, 20 Jun 2025 | Knowledge Source |
-| S03 / S04 | AFA mechanism and September 2026 rate ([EN](https://www.tnb.com.my/assets/press_releases/20260915_23_bi.pdf), [BM](https://www.tnb.com.my/assets/press_releases/20260915_23_bm.pdf)) | TNB, 15 Sep 2026 | Knowledge Source, rules |
+| S01 | [Jadual Tarif Elektrik, 1 Jul 2025 to 31 Dec 2027](https://www.mytnb.com.my/tariff/PDF/jadual-tarif-elektrik-terkini-2-julai-2025.pdf) | TNB (RP4 schedule), 2 Jul 2025 | Tariff rates |
+| S02 | [Kenyataan Media: Jadual Elektrik Baharu](https://www.mytnb.com.my/tariff/PDF/kenyataan-media-suruhanjaya-tenaga-jadual-elektrik-baharu-20-jun-2025.pdf) | Suruhanjaya Tenaga, 20 Jun 2025 | Knowledge Source, worked example |
+| S03 / S04 | AFA mechanism and September 2026 rate ([EN](https://www.tnb.com.my/assets/press_releases/20260915_23_bi.pdf), [BM](https://www.tnb.com.my/assets/press_releases/20260915_23_bm.pdf)) | TNB, 15 Sep 2026 | Knowledge Source |
 | S05 | [Aras perlindungan dinaikkan ke 800kWj](https://www.tnb.com.my/assets/press_releases/20260918_24_bm.pdf) | TNB, 18 Sep 2026 | Knowledge Source |
 | S06 | [Protection threshold raised to 800 kWh](https://www.tnb.com.my/assets/press_releases/20261002_25_bi.pdf) | TNB, 2 Oct 2026 | Knowledge Source, rules |
+| S07 / S08 | myTNB tariff page text ([EN](https://www.mytnb.com.my/tariff/EN.json), [BM](https://www.mytnb.com.my/tariff/BM.json)) | TNB, retrieved Nov 2026 | Monthly AFA, charge rules, Knowledge Source in both languages |
+| S09 | [myTNB calculator rates](https://www.mytnb.com.my/tariff/js/rates.js) | TNB, retrieved Nov 2026 | EEI bands, thresholds, calendar month split, rounding |
+| S10 | [myTNB domestic bill calculator](https://www.mytnb.com.my/tariff/js/calculator-newDomestic.js) | TNB, retrieved Nov 2026 | Service tax base, KWTBB base, reference bills |
 
-Source PDFs are not committed. Download them from the URLs above into `data/raw/`; the notebook checks each file against its registered SHA-256.
+Source files are not committed. Download them from the URLs above into `data/raw/`; the pipeline checks each file against its registered SHA-256. The myTNB files (S07 to S10) change when TNB declares a new AFA rate, so a hash mismatch means the sources must be re-verified before release. Extracted text from these official publications is kept for this coursework with attribution; the right to republish it publicly has not been confirmed.
 
-## Data Quality Gate (Week 4)
+## Data Quality Gate
 
-- **Text chunks:** GO WITH CONDITIONS.
-- **Tables:** HOLD until all 14 rule groups are present and the 50 TNB reference bills in [`docs/week4_evidence/tnb_reference_bills.csv`](docs/week4_evidence/tnb_reference_bills.csv) reproduce to the sen.
-- **Open actions:** Add EEI, KWTBB, monthly AFA (Jul 2025 to Nov 2026), service tax base, AFA on all kWh above the threshold, rounding, and billing period split from official TNB sources; add `superseded_for` metadata to S03-p1-c02, S03-p2-c07, S04-p1-c02, and S04-p2-c07; add English official text for all months; add `.gitattributes` for CSV line endings.
+**Week 4 audit** ([report](docs/week4_data_quality_report.md)): text chunks GO WITH CONDITIONS; tables HOLD (7 of 14 rule groups, 0 of 50 TNB reference bills reproducible).
+
+**Re-review, 22 November 2026** (`python src/quality_gate.py`, results in [`docs/week4_evidence/rereview/`](docs/week4_evidence/rereview/)):
+- **Tables: GO.** 14 of 14 rule groups present; all 64 reference bills in [`evaluation/reference_bills.csv`](evaluation/reference_bills.csv) reproduce to the sen, including 13 bills that span the 1 September 2026 threshold change.
+- **Text: GO WITH CONDITIONS.** The four 600 kWh chunks are dated to the period they are true for; English text now exists for every month. Condition: RAI3 parity is still to be measured once retrieval is built.
+- **Still open:** 2027 protection threshold (shown as two labelled scenarios); public republication rights; S06 eligibility table kept as `needs_review`.
 
 ## Repository Structure
 
 ```
-docs/                 lab reports, scope, architecture and pipeline diagrams
-docs/week4_evidence/   audit evidence for the Week 4 report
-data/raw/             source registry and curated rate tables (PDFs downloaded locally, not committed)
-data/processed/       prepared chunks and verified rate tables
-data/pipeline_v1/     V1 pipeline runs with their manifests
-data/week3_manifest.json   lineage: each source to its prepared output, with SHA-256
-src/                  application code
-src/week4_audit.py    reproduces the Week 4 audit counts
-notebooks/            Colab notebooks (week3_pipeline.ipynb)
-evaluation/   test sets and results
-prompts/      system and task prompts
+docs/                       lab reports, scope, architecture (V1 and V2) and pipeline diagrams
+docs/week4_evidence/        Week 4 audit evidence; rereview/ holds the 22 Nov 2026 re-review
+data/raw/                   source registry and curated tables (source files downloaded locally, not committed)
+data/processed/             Week 3 prepared chunks and tables (kept as the Week 3 record)
+data/pipeline_v1/           Week 3 pipeline runs with their manifests
+data/pipeline_v2/           current prepared data: chunks, tables and manifest
+data/week3_manifest.json    Week 3 lineage
+src/pipeline_v2.py          builds data/pipeline_v2 from data/raw
+src/calculator.py           deterministic bill calculator (TNB's published method, values from data tables)
+src/quality_gate.py         provenance, rule completeness, reference bills and coverage checks
+src/week4_audit.py          reproduces the Week 4 audit counts on the Week 3 data
+tests/                      calculator tests
+notebooks/                  Colab notebooks (week3_pipeline.ipynb)
+evaluation/                 test sets and results (reference_bills.csv)
+prompts/                    system and task prompts
 ```
+
+Run order: `python src/pipeline_v2.py`, then `python src/quality_gate.py`, then `python -m pytest tests`.
 
 ## Weekly Progress
 
@@ -88,3 +100,4 @@ prompts/      system and task prompts
 | W2 | Requirements, evaluation criteria, V1 architecture | `docs/week2_*` | ✅ |
 | W3 | V1 data pipeline: ingestion, cleaning, chunking, verified rate table, lineage | `notebooks/week3_pipeline.ipynb`, `docs/week3_*`, `data/` | ✅ |
 | W4 | Data quality and bias audit | [`docs/week4_data_quality_report.md`](docs/week4_data_quality_report.md) | ✅ |
+| W4 follow-up | Data fixes from the audit, V2 pipeline, calculator, reference bills, Week 2 v1.1, V2 architecture | `data/pipeline_v2/`, `src/`, `evaluation/`, [`docs/architecture_v2.png`](docs/architecture_v2.png) | ✅ |

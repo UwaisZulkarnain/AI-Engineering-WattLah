@@ -1,0 +1,2 @@
+source_id,page,find,replace,reason
+S05,1,ko s bahan,kos bahan,pypdf layout mode split the word

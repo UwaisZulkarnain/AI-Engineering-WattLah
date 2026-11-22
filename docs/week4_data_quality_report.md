@@ -24,7 +24,7 @@ Labels used: **[Observed]** checked directly in the data or source, **[Inferred 
 | Consistency | Retail exemption row P03 (600 kWh, to 31 Dec 2027) overlaps P02 (800 kWh, Sep to Dec 2026) with a different value. 4 chunks dated Sep 2026 state 600 kWh protection, superseded by the 800 kWh decision for that month [Observed]. | `manual_review_tables.csv`, `manual_review_text.csv` | Retrieval for Sep 2026 can return a wrong threshold (RAI1). | **Review** |
 | Accuracy | All 217 numbers in the 33 chunks appear on the cited source page. Lowest word coverage 0.897, caused only by section headings carried over from the previous page by design. 5 of 5 tariff rates and 5 of 6 rules match S01 and myTNB [Observed]. One extraction artifact ("ko s bahan") [Observed]. | `text_accuracy.csv` | Low. Artifact does not change meaning. | **Pass** |
 | Timeliness | Latest AFA in data: Sep 2026. Latest declared: Nov 2026 (+3.60), so the tables are two months behind on the audit date. No source covers 2027 protection; the government has not decided [Observed]. | `audit_summary.json`, myTNB page | Bills for Oct and Nov 2026 cannot be computed; 2027 bills rest on an assumption. | **Warning** |
-| Uniqueness | No duplicate chunk IDs, no exact duplicate texts, no duplicate row IDs [Observed]. One near-duplicate pair: energy saving tips repeated across two press releases (Jaccard 0.82). S03 and S04 are the same release in English and BM, kept on purpose for parity testing. | `audit_summary.json` | Repeats may crowd retrieval results [Inferred risk]. | **Pass** (exceptions kept) |
+| Uniqueness | No duplicate chunk IDs, no exact duplicate texts, no duplicate row IDs [Observed]. One near-duplicate pair: energy saving tips repeated across two press releases (Jaccard 0.83). S03 and S04 are the same release in English and BM, kept on purpose for parity testing. | `audit_summary.json` | Repeats may crowd retrieval results [Inferred risk]. | **Pass** (exceptions kept) |
 
 ## 3. Validation Findings
 
@@ -101,3 +101,18 @@ A second, smaller risk: all six sources come from TNB or ST, so explanations fol
 
 Text, 15 chunks: 7 Pass, 2 Pass (kept exceptions), 2 Warning (S05-p1-c03, S06-p1-c02), 4 Review (S03-p1-c02, S03-p2-c07, S04-p1-c02, S04-p2-c07).
 Tables, 11 rows: 9 Pass, 1 Review (P03), 1 Warning (P05).
+
+## Appendix C: Re-review after mitigation (22 November 2026)
+
+Priority 1 and most of priority 2 from section 7 were completed. Sources added: S07 and S08 (myTNB tariff page text, English and BM), S09 (myTNB calculator rates) and S10 (myTNB domestic bill calculator). The section 7 plan named these S07 to S09; the English and BM text became two sources. Re-run with `python src/quality_gate.py` on `data/pipeline_v2/`; results in `docs/week4_evidence/rereview/`.
+
+| Check | Week 4 | Re-review |
+|---|---|---|
+| V1 provenance | 44 of 44 | All chunks and rows pass; the one assumed rule (2027, 800 kWh) is labelled `assumed` with no source, as designed |
+| V2 rule completeness | 7 of 14 | 14 of 14 |
+| TNB reference bills reproduced to the sen | 0 of 50 | 64 of 64 (50 full month, 13 spanning 1 Sep 2026, 1 ST worked example) |
+| Months with 0 English chunks (Jul 2025 to Jan 2027) | 15 of 19 | 0 of 19 |
+| Chunks stating 600 kWh that are eligible for Sep to Dec 2026 | 4 | 0 |
+| Personal data matches | 0 | 0 |
+
+**Decision:** tables move from HOLD to **GO**. Text stays **GO WITH CONDITIONS** until RAI3 parity is measured on the built retrieval. Still open: the 2027 threshold (two labelled scenarios), public republication rights, and the S06 eligibility table (`needs_review`).

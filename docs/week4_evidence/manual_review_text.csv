@@ -12,5 +12,5 @@ S05-p1-c03,"Extraction artifact ""ko s bahan"" for ""kos bahan""",Warning,Keep; 
 S06-p1-c01,No defect found; same page-level flag,Pass,Set status per chunk
 S06-p1-c02,"Eligibility table flattened; header row split across cells, rows still readable",Warning,Keep with warning; add the table as curated rows
 S06-p1-c03,No defect found; same page-level flag,Pass,Set status per chunk
-S04-p2-c06,Accurate; energy saving tips repeated in S05-p2-c04 (Jaccard 0.82),Pass (exception),Keep both; handle repeats at retrieval
+S04-p2-c06,Accurate; energy saving tips repeated in S05-p2-c04 (Jaccard 0.83),Pass (exception),Keep both; handle repeats at retrieval
 S05-p2-c04,Accurate; repeat of S04-p2-c06 content,Pass (exception),Same

@@ -73,13 +73,13 @@ Documents are downloaded for local course use only. The repository stores a sour
 
 **Different from EduAdvisor**
 - **Numbers, not just text:** answers include ringgit amounts, so a calculator tool must produce them. Retrieval alone is not enough.
-- **Rules change with time:** AFA changes monthly and thresholds are temporary, so retrieval must filter by billing month. A correct rule for the wrong month is a wrong answer.
+- **Rules change with time:** AFA changes monthly and thresholds are temporary, so retrieval must filter by the months of the billing period. A correct rule for the wrong month is a wrong answer.
 - **Bilingual:** answers in BM and English, with answer quality measured in both languages.
 - **Wider user group:** the general public, many with low technical or financial literacy, rather than university students.
 
 ## Responsible AI Risks
 
-**Risk 1: Wrong period.** The system applies a rule from the wrong month, for example the 800 kWh relief after it reverts on 1 January 2027. Households then dispute a correct bill or budget for the wrong amount.
+**Risk 1: Wrong period.** The system applies a rule from the wrong month, for example the 600 kWh threshold applied to a September 2026 bill, when the 800 kWh relief was in force. Households then dispute a correct bill or budget for the wrong amount.
 Control: tag every document with its effective dates and state the applicable period in every answer.
 
 **Risk 2: Invented numbers.** The model states a charge or total it computed itself. A wrong figure stated confidently misleads users who cannot check it.
@@ -93,3 +93,5 @@ Control: do not store uploads, redact identifiers before processing, and warn us
 
 **Risk 5: Mistaken authority.** Users treat Wattlah as an official TNB channel and rely on it in a billing dispute.
 Control: a clear "not affiliated with TNB" notice, and disputes are always referred to official TNB channels.
+
+*Updated 22 November 2026: Risk 1 example corrected. The earlier example assumed the 800 kWh relief reverts on 1 January 2027, which no official source states (see [week2_requirements.md](week2_requirements.md), version 1.1).*

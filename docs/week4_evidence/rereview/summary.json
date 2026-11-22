@@ -1,0 +1,133 @@
+{
+  "source_hash_matches": {
+    "actual": 10,
+    "expected": 10
+  },
+  "v1": {
+    "items": 112,
+    "PASS": 111,
+    "ASSUMED": 1,
+    "FAIL": 0
+  },
+  "v2": {
+    "groups": 14,
+    "PASS": 14,
+    "FAIL": 0
+  },
+  "reference_bills": {
+    "PASS": 64,
+    "total": 64
+  },
+  "eligible_chunks_by_month": [
+    {
+      "bill_month": "2025-07",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2025-08",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2025-09",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2025-10",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2025-11",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2025-12",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-01",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-02",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-03",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-04",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-05",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-06",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-07",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-08",
+      "eligible_en_chunks": 12,
+      "eligible_ms_chunks": 21
+    },
+    {
+      "bill_month": "2026-09",
+      "eligible_en_chunks": 22,
+      "eligible_ms_chunks": 33
+    },
+    {
+      "bill_month": "2026-10",
+      "eligible_en_chunks": 20,
+      "eligible_ms_chunks": 31
+    },
+    {
+      "bill_month": "2026-11",
+      "eligible_en_chunks": 20,
+      "eligible_ms_chunks": 31
+    },
+    {
+      "bill_month": "2026-12",
+      "eligible_en_chunks": 20,
+      "eligible_ms_chunks": 31
+    },
+    {
+      "bill_month": "2027-01",
+      "eligible_en_chunks": 10,
+      "eligible_ms_chunks": 19
+    }
+  ],
+  "superseded_chunk_midmonth_counts": {
+    "S03-p1-c02": 0,
+    "S03-p2-c07": 0,
+    "S04-p1-c02": 0,
+    "S04-p2-c07": 0
+  },
+  "personal_data_matches": {
+    "mobile": 0,
+    "IC": 0,
+    "10-14 digit numbers": 0
+  },
+  "needs_review_chunks": [
+    "S06-p1-c02"
+  ],
+  "failures": []
+}

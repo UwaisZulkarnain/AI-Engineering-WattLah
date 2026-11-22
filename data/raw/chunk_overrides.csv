@@ -1,0 +1,17 @@
+chunk_id,effective_from,effective_to,status,superseded_for_from,superseded_for_to,superseded_by,reason
+S03-p1-c01,2025-07-01,open,ready,,,,"General AFA explanation, true since AFA began on 1 Jul 2025"
+S03-p1-c02,2025-07-01,2026-08-31,ready,2026-09-01,2026-12-31,S05;S06,States the 600 kWh protection. True for Jul 2025 to Aug 2026; superseded by the 800 kWh decision for Sep to Dec 2026
+S03-p1-c03,2025-07-01,open,ready,,,,AFA history and two-way mechanism; figures as at 15 Sep 2026
+S03-p2-c06,2025-07-01,open,ready,,,,General energy saving advice
+S03-p2-c07,2025-07-01,2026-08-31,ready,2026-09-01,2026-12-31,S05;S06,States the 600 kWh protection; same as p1-c02
+S04-p1-c01,2025-07-01,open,ready,,,,"General AFA explanation, true since AFA began on 1 Jul 2025"
+S04-p1-c02,2025-07-01,2026-08-31,ready,2026-09-01,2026-12-31,S05;S06,States the 600 kWh protection. True for Jul 2025 to Aug 2026; superseded by the 800 kWh decision for Sep to Dec 2026
+S04-p1-c03,2025-07-01,open,ready,,,,AFA history and two-way mechanism; figures as at 15 Sep 2026
+S04-p2-c06,2025-07-01,open,ready,,,,General energy saving advice
+S04-p2-c07,2025-07-01,2026-08-31,ready,2026-09-01,2026-12-31,S05;S06,States the 600 kWh protection; same as p1-c02
+S05-p1-c01,,,ready,,,,Week 4 manual review: no defect; flag was copied from the page note
+S05-p1-c02,,,ready,,,,Week 4 manual review: no defect; flag was copied from the page note
+S06-p1-c01,,,ready,,,,Week 4 manual review: no defect; flag was copied from the page note
+S06-p1-c03,,,ready,,,,Week 4 manual review: no defect; flag was copied from the page note
+S05-p1-c03,,,ready,,,,"Artifact ""ko s bahan"" fixed by text_corrections.csv"
+S06-p1-c02,,,needs_review,,,,"Eligibility table flattened; header row split. Readable, keep with warning"

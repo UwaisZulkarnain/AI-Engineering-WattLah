@@ -1,0 +1,27 @@
+source_id,language,title_key,body_key,title_text,topic,effective_from,effective_to
+S07,en,faqQ7Title,faqQ7Body,,AFA,2025-07-01,open
+S07,en,faqQ9Title,faqQ9Body,,AFA,2025-07-01,open
+S07,en,faqQ11Title,faqQ11Body,,AFA,2025-07-01,open
+S07,en,faqQ13Title,faqQ13Body,,EEI,2025-07-01,open
+S07,en,faqQ18Title,faqQ18Body,,tariff_structure,2025-07-01,open
+S07,en,,calcDomesticFormula,Domestic bill formula,bill_formula,2025-07-01,open
+S07,en,,calcChargesPoint1,Renewable Energy Fund (KWTBB),KWTBB,2025-07-01,open
+S07,en,,calcChargesPoint2,Service tax,service_tax,2026-09-01,2026-12-31
+S07,en,,calcDomesticNote4,Service tax on usage above 800 kWh,service_tax,2026-09-01,2026-12-31
+S07,en,,categoryResidentialTblNote1,Domestic tariff notes,protection,2026-09-01,2026-12-31
+S07,en,faqBP800Q1Title,faqBP800Q1Body,,protection,2026-09-01,2026-12-31
+S07,en,faqBP800Q3Title,faqBP800Q3Body,,protection,2026-09-01,2026-12-31
+S07,en,,indexFeature3Desc1,Who is protected,protection,2026-09-01,2026-12-31
+S08,ms,faqQ7Title,faqQ7Body,,AFA,2025-07-01,open
+S08,ms,faqQ9Title,faqQ9Body,,AFA,2025-07-01,open
+S08,ms,faqQ11Title,faqQ11Body,,AFA,2025-07-01,open
+S08,ms,faqQ13Title,faqQ13Body,,EEI,2025-07-01,open
+S08,ms,faqQ18Title,faqQ18Body,,tariff_structure,2025-07-01,open
+S08,ms,,calcDomesticFormula,Formula bil domestik,bill_formula,2025-07-01,open
+S08,ms,,calcChargesPoint1,Kumpulan Wang Tenaga Boleh Baharu (KWTBB),KWTBB,2025-07-01,open
+S08,ms,,calcChargesPoint2,Cukai perkhidmatan,service_tax,2026-09-01,2026-12-31
+S08,ms,,calcDomesticNote4,Cukai perkhidmatan bagi penggunaan melebihi 800 kWj,service_tax,2026-09-01,2026-12-31
+S08,ms,,categoryResidentialTblNote1,Nota tarif domestik,protection,2026-09-01,2026-12-31
+S08,ms,faqBP800Q1Title,faqBP800Q1Body,,protection,2026-09-01,2026-12-31
+S08,ms,faqBP800Q3Title,faqBP800Q3Body,,protection,2026-09-01,2026-12-31
+S08,ms,,indexFeature3Desc1,Siapa yang dilindungi,protection,2026-09-01,2026-12-31
