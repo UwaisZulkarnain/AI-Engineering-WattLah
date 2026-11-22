@@ -2,6 +2,7 @@
 
 **Project:** Wattlah, "Semak bil elektrik anda" | **Author:** Muhammad Uwais Bin Zulkarnain (A24AI0114) | **Course:** SAIA3113 AI Engineering
 **Audit date:** 20 November 2026 | **Repository state audited:** commit `35b9a07` (Week 3 data, unchanged since `e880a18`)
+**Version 1.1 (22 November 2026):** aligned with the Topic 4 lecture terms (rule anatomy, defect types, bias types and propagation, data leaving the system) and re-review added as Appendix C. Findings and numbers are unchanged.
 
 Labels used: **[Observed]** checked directly in the data or source, **[Inferred risk]** a likely effect not yet tested, **[N.V.]** not verified.
 
@@ -28,10 +29,10 @@ Labels used: **[Observed]** checked directly in the data or source, **[Inferred 
 
 ## 3. Validation Findings
 
-| Rule | Condition | Tested | Result | Action |
-|---|---|---|---|---|
-| **V1** Provenance (RAI1, FR5) | Every chunk and row has a source ID in the registry, a page within the source's page count, an effective start date, a source hash equal to the registry hash, and (rows) `verified_in_source = True`. | 44 (33 chunks, 11 rows) | **44 pass, 0 fail** | None. Rule kept as a hard fail in the pipeline. |
-| **V2** Rule completeness (NFR1) | Every rule group used by TNB's calculator for domestic general bills exists in the tables for every month from Jul 2025 to Nov 2026. | 14 rule groups | **7 pass, 7 fail** (G07, G08, G10 to G14) | Hard fail. Tables on HOLD until the groups are added and V2 is re-run. |
+| Rule | Quality expectation | Observable property and check | Result | Action | Evidence |
+|---|---|---|---|---|---|
+| **V1** Provenance | Every chunk and row can be traced to its official source and the period it applies to (RAI1, FR5). | Source ID in the registry; page within the source's page count; effective start date present; source hash equal to the registry hash; rows `verified_in_source = True`. | **44 of 44 pass** | Hard fail: any failing item is quarantined. None failed. | `v1_provenance.csv` |
+| **V2** Rule completeness | The tables hold every rule needed to reproduce a TNB bill for every supported month (NFR1). | Each of the 14 rule groups TNB's calculator uses exists, for every month from Jul 2025 to Nov 2026. | **7 pass, 7 fail** (G07, G08, G10 to G14) | Hard fail: tables on HOLD until the groups are added and V2 is re-run. | `v2_rule_completeness.csv`, `tnb_reference_bills.csv` |
 
 Supporting check for V2: all 50 TNB reference bills (`tnb_reference_bills.csv`, four billing months, 150 to 2000 kWh) contain an EEI or KWTBB line, which the current tables cannot produce, so **0 of 50** are reproducible [Observed].
 
@@ -39,18 +40,32 @@ A related lineage finding: the manifest hashes for the two raw CSVs (L06, L07) m
 
 ## 4. Duplicate, Anomaly and Coverage Findings
 
-- **Over-flagging [Observed].** 6 chunks are `needs_review`, but only 2 have a defect (S05-p1-c03 artifact, S06-p1-c02 flattened table). The other 4 inherited a page-level note. Status needs to be set per chunk.
-- **Excluded pages [Observed].** 6 of 18 text-source pages produced no chunks: press release "About TNB" and media contact pages (S03 p3, S04 p3, S05 p3), an infographic repeating pages 1 to 2 (S05 p4), a blank page (S06 p3) and the ST worked example bill (S02 p5), which is an image. The first five are intended exclusions. The last is a loss: it is the only worked bill in the sources.
+| Defect type | Finding [Observed] | Decision |
+|---|---|---|
+| Missing | Tables lack EEI, KWTBB, 16 of 17 AFA months and four calculation rules (section 3). The ST worked example bill (S02 p5) is an image, so no text was extracted. | Hard fail (V2). Worked bill to be transcribed as a reference case. |
+| Corrupted | Extraction artifact "ko s bahan" for "kos bahan" (S05-p1-c03). Eligibility table flattened with its header row split (S06-p1-c02). | Warning: correct the text; keep the table chunk with a warning. |
+| Inconsistent | Row P03 (600 kWh to Dec 2027) overlaps P02 (800 kWh, Sep to Dec 2026). 4 chunks dated Sep 2026 state 600 kWh protection (S03-p1-c02, S03-p2-c07, S04-p1-c02, S04-p2-c07). | Manual review: re-date the chunks to the period they are true for. |
+| Noisy | Energy saving tips repeated across two releases (S04-p2-c06, S05-p2-c04, Jaccard 0.83). 5 of the 6 pages with no chunks are intended exclusions: press contacts, "About TNB", a repeated infographic and a blank page. | Keep: exceptions, not defects. Handle repeats at retrieval. |
+| Anomaly | 6 chunks flagged `needs_review`, but only 2 have a defect; the other 4 copied a page-level note. The two raw CSV manifest hashes match only with Windows line endings. | Review: set status per chunk; fix line endings with `.gitattributes`. |
+
 - **Coverage, period (RAI1) [Observed].** Bills from Jul 2025 to Aug 2026 (14 months) have 9 eligible chunks each, all BM. Sep 2026 has 33, Oct to Dec 2026 have 19. Jan 2027 has 9. AFA explanations in S03 and S04 are dated to Sep 2026 only, so they are not eligible for any other month even though the explanation itself is general.
 - **Coverage, language (RAI3) [Observed].** 22 BM and 11 English chunks. English chunks exist **only for Sep to Dec 2026**: 0 English chunks for 15 of the 19 months checked (`eligible_chunks_by_month.csv`). EEI is covered by 2 BM chunks and 0 English chunks; KWTBB by none.
 
 ## 5. Bias Assessment
 
-**Pipeline-induced and representation bias, by language and period.**
-Source choice (BM-only tariff schedule and ST statement, English press releases only from Sep 2026) plus document-level effective dates applied to every chunk → 0 English evidence for 15 of 19 billing months, and 0 explanations of EEI or KWTBB in English → English answers for most months would have no English source to retrieve, so the model must translate BM text or answer without grounding [Inferred risk]. This hits RAI3 (equal BM and English quality) and FR5 (source for every rule). It is a coverage skew, not proven unfairness; RAI3 parity tests will measure the actual gap.
-**Control:** add English official text for the same rules (myTNB English tariff page and FAQ, retrieved 17 Nov 2026), date chunks by the rule they describe rather than the whole document, and run the RAI3 parity set per period, not only overall.
+**Main finding: representation bias by language and period, amplified by the pipeline.**
+Source choice (BM-only tariff schedule and ST statement, English press releases only from Sep 2026) plus a pipeline decision (each chunk took its whole document's effective dates) → 0 English evidence for 15 of 19 billing months, and no English explanation of EEI or KWTBB [Observed] → English answers for most months would have no English source to retrieve [Inferred risk]. This hits RAI3 (equal BM and English quality) and FR5. It is a coverage skew, not proven unfairness; RAI3 parity tests measure the real gap.
 
-A second, smaller risk: all six sources come from TNB or ST, so explanations follow the utility's framing (for example "RM3.1 billion in rebates"). Wattlah should state facts and amounts, not adopt promotional claims.
+| Stage | How the English gap travels | Where it is interrupted |
+|---|---|---|
+| Source data | English sources only from Sep 2026 | Add official English text (myTNB English tariff page and FAQ) |
+| Data preparation | Whole-document dates hide general explanations from other months | Date each chunk by the rule it describes |
+| Retrievable corpus | 0 English chunks for 15 months | Gate check: no month may have 0 English chunks |
+| Retrieved context | An English question finds BM text or nothing | Retrieval says when it falls back to a BM source (Topic 7 build) |
+| Generated response | Ungrounded or mistranslated answer | Answer only from retrieved text and calculator output (RAI2) |
+| User experience | English speakers get weaker help | RAI3 parity measured per period, not only overall |
+
+**Other bias types checked.** Historical: S03 and S04 state the AFA history and rebate totals as at 15 Sep 2026, which is accurate but goes stale, so those figures stay dated to that release. Measurement: chunk count is not a coverage measure (Sep 2026 has 33 chunks but none on KWTBB), so coverage was measured per month, language and topic. Viewpoint: all six sources come from TNB or ST, so explanations follow the utility's framing (for example "RM3.1 billion in rebates"); Wattlah states facts and amounts, not promotional claims.
 
 ## 6. Privacy, Rights and Governance
 
@@ -59,7 +74,8 @@ A second, smaller risk: all six sources come from TNB or ST, so explanations fol
 | Provenance and version | Six sources with issuer, document reference, publish date, retrieval date and SHA-256 in the registry; all hashes verified [Observed]. Lineage L01 to L07 in `week3_manifest.json`; L06 and L07 raw CSV hashes are line-ending dependent (section 3). |
 | Rights | Public official publications. Raw PDFs are not in the repository: `git ls-files` lists 0 PDFs [Observed]. Whether the extracted press release text may be republished in a public repository: **[N.V.]**. TNB pages state "Hak Cipta Terpelihara". |
 | Privacy | Raw S03 page 3 lists named media contacts with personal mobile numbers. That page is excluded by the end-marker rule, and the prepared text has 0 mobile, IC or long account number matches [Observed]. 5 chunks keep TNB's organisational CareLine email, which is not personal data. |
-| Consent / collection basis | No personal data is collected in the corpus, so consent does not apply. User input in V1 is kWh and billing dates only; FR8 and RAI4 keep identifiers out. |
+| Will data leave the system? | Not in this audit: no model is integrated yet. From the V1 build, the user's question, kWh, billing dates and retrieved public chunks go to the external model service, after the Personal Data Filter removes identifiers (RAI4, ADR3). Raw sources and logs stay local. |
+| User interaction / consent | No personal data is collected in the corpus, so consent does not apply. V1 stores only redacted evaluation logs; their purpose, access and retention must be written down before any public release **[N.V.]**. |
 | Maintenance | Owner: project author. Re-validate on each monthly AFA declaration (around the 1st), any new TNB or ST notice, a government decision on 2027 protection, or a change in the myTNB page hash. |
 
 **Safeguards and actions:** keep raw PDFs out of Git; keep the end-marker exclusion and the phone-number assertion as hard checks; ask the lecturer whether the extracted text may stay in a public repository, otherwise make the repository private or keep only chunk IDs and hashes.
