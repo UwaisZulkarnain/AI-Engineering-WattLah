@@ -1,8 +1,8 @@
-# Week 4 Data Quality and Bias Report: Wattlah
+# Week 4 Data Quality and Bias Report: WattLah
 
-**Project:** Wattlah, "Semak bil elektrik anda" | **Author:** Muhammad Uwais Bin Zulkarnain (A24AI0114) | **Course:** SAIA3113 AI Engineering
+**Project:** WattLah, "Semak bil elektrik anda" | **Author:** Muhammad Uwais Bin Zulkarnain (A24AI0114) | **Course:** SAIA3113 AI Engineering
 **Audit date:** 20 November 2026 | **Repository state audited:** commit `35b9a07` (Week 3 data, unchanged since `e880a18`)
-**Version 1.1 (22 November 2026):** aligned with the Topic 4 lecture terms (rule anatomy, defect types, bias types and propagation, data leaving the system) and re-review added as Appendix C. Findings and numbers are unchanged.
+**Version 1.1 (22 November 2026):** aligned with the Topic 4 lecture terms (rule anatomy, defect types, bias types and propagation, data leaving the system) and re-review added as Appendix C. Findings and numbers are unchanged. **Version 1.2 (22 November 2026):** privacy row updated for ADR9 (local model with free cloud fallback).
 
 Labels used: **[Observed]** checked directly in the data or source, **[Inferred risk]** a likely effect not yet tested, **[N.V.]** not verified.
 
@@ -10,7 +10,7 @@ Labels used: **[Observed]** checked directly in the data or source, **[Inferred 
 
 | Field | Record |
 |---|---|
-| Purpose and users | Bilingual (BM and English) explainer for Peninsular Malaysia households on the TNB domestic general tariff. Users type their kWh and billing dates; Wattlah computes the bill with a deterministic calculator and explains each charge from official documents (retrieval over dated sources). |
+| Purpose and users | Bilingual (BM and English) explainer for Peninsular Malaysia households on the TNB domestic general tariff. Users type their kWh and billing dates; WattLah computes the bill with a deterministic calculator and explains each charge from official documents (retrieval over dated sources). |
 | Requirements audited | **NFR1** Correctness (calculation): bill amounts must match the published tariff for every supported case. Needs every charge rule, rate and monthly AFA value. **RAI1** Wrong period: only rules in force for the billing month may be used. Needs a correct effective period on every chunk and rule. |
 | Pathways | **A, text:** `data/processed/prepared_text.jsonl` (Topic 3 Part B), lineage L01 to L05 in `data/week3_manifest.json`. Byte-identical to `data/pipeline_v1/documents/prepared_text.jsonl` (Part C). **B, tables:** `data/processed/prepared_tariff_rates.csv` and `prepared_relief_rules.csv`, lineage L06 and L07. |
 | Sources | S01 to S06 in `data/raw/source_registry.csv`: TNB tariff schedule, ST media statement, four TNB press releases, published 20 Jun 2025 to 2 Oct 2026, retrieved 16 Nov 2026. Public official publications. All six SHA-256 hashes match the registry [Observed]. |
@@ -65,7 +65,7 @@ Source choice (BM-only tariff schedule and ST statement, English press releases 
 | Generated response | Ungrounded or mistranslated answer | Answer only from retrieved text and calculator output (RAI2) |
 | User experience | English speakers get weaker help | RAI3 parity measured per period, not only overall |
 
-**Other bias types checked.** Historical: S03 and S04 state the AFA history and rebate totals as at 15 Sep 2026, which is accurate but goes stale, so those figures stay dated to that release. Measurement: chunk count is not a coverage measure (Sep 2026 has 33 chunks but none on KWTBB), so coverage was measured per month, language and topic. Viewpoint: all six sources come from TNB or ST, so explanations follow the utility's framing (for example "RM3.1 billion in rebates"); Wattlah states facts and amounts, not promotional claims.
+**Other bias types checked.** Historical: S03 and S04 state the AFA history and rebate totals as at 15 Sep 2026, which is accurate but goes stale, so those figures stay dated to that release. Measurement: chunk count is not a coverage measure (Sep 2026 has 33 chunks but none on KWTBB), so coverage was measured per month, language and topic. Viewpoint: all six sources come from TNB or ST, so explanations follow the utility's framing (for example "RM3.1 billion in rebates"); WattLah states facts and amounts, not promotional claims.
 
 ## 6. Privacy, Rights and Governance
 
@@ -74,7 +74,7 @@ Source choice (BM-only tariff schedule and ST statement, English press releases 
 | Provenance and version | Six sources with issuer, document reference, publish date, retrieval date and SHA-256 in the registry; all hashes verified [Observed]. Lineage L01 to L07 in `week3_manifest.json`; L06 and L07 raw CSV hashes are line-ending dependent (section 3). |
 | Rights | Public official publications. Raw PDFs are not in the repository: `git ls-files` lists 0 PDFs [Observed]. Whether the extracted press release text may be republished in a public repository: **[N.V.]**. TNB pages state "Hak Cipta Terpelihara". |
 | Privacy | Raw S03 page 3 lists named media contacts with personal mobile numbers. That page is excluded by the end-marker rule, and the prepared text has 0 mobile, IC or long account number matches [Observed]. 5 chunks keep TNB's organisational CareLine email, which is not personal data. |
-| Will data leave the system? | Not in this audit: no model is integrated yet. From the V1 build, the user's question, kWh, billing dates and retrieved public chunks go to the external model service, after the Personal Data Filter removes identifiers (RAI4, ADR3). Raw sources and logs stay local. |
+| Will data leave the system? | Not in this audit: no model is integrated yet. From the V1 build a local open model answers by default, so nothing leaves the device. If the free cloud fallback is used (ADR9), the user's question, kWh, billing dates and retrieved public chunks go to that provider after the Personal Data Filter removes identifiers (RAI4, ADR3); its free tier may use prompts to improve its models. Raw sources and logs stay local. |
 | User interaction / consent | No personal data is collected in the corpus, so consent does not apply. V1 stores only redacted evaluation logs; their purpose, access and retention must be written down before any public release **[N.V.]**. |
 | Maintenance | Owner: project author. Re-validate on each monthly AFA declaration (around the 1st), any new TNB or ST notice, a government decision on 2027 protection, or a change in the myTNB page hash. |
 

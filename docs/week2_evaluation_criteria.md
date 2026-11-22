@@ -1,6 +1,6 @@
-# Week 2 Evaluation Criteria: Wattlah
+# Week 2 Evaluation Criteria: WattLah
 
-Version: 1.1 (22 November 2026). Changes are listed at the end.
+Version: 1.2 (22 November 2026). Changes are listed at the end.
 Requirement IDs refer to [week2_requirements.md](week2_requirements.md).
 
 ## Evaluation Criteria Table
@@ -13,10 +13,10 @@ Requirement IDs refer to [week2_requirements.md](week2_requirements.md).
 | O1, O3 / FR2, FR5, NFR2 | Grounded and cited explanations | Generation capability | Score QA claim by claim against the cited documents; check that each citation exists and supports the claim it is attached to. | Grounded response rate; citation presence rate; citation source match rate | ≥ 90%; 100%; ≥ 95% | Users can check any explanation against the official document themselves. |
 | O2, O3 / RAI2 | Figure traceability | Instruction-following capability | Trace every figure in amount bearing answers, across all sets, to the calculation log or a cited source. | Untraceable figures; working shown rate | 0; 100% | No confident but made up ringgit amount reaches a user. |
 | O1, O3 / FR6, RAI3 | BM and English parity | Generation capability | Score the 20 QA question pairs in both languages with the same rubric. | Absolute gap in correct response rate | ≤ 10 percentage points | Households who prefer BM get equally reliable help. |
-| O2, O3 / FR7, FR8, RAI5 | Out of scope refusal and redirect | Instruction-following capability | Run SCOPE; check that each answer declines and points to the right channel; check the notice in every session. | Refusal and redirect success rate; notice shown rate | ≥ 95%; 100% | Disputes go to TNB, and users do not mistake Wattlah for an official channel. |
+| O2, O3 / FR7, FR8, RAI5 | Out of scope refusal and redirect | Instruction-following capability | Run SCOPE; check that each answer declines and points to the right channel; check the notice in every session. | Refusal and redirect success rate; notice shown rate | ≥ 95%; 100% | Disputes go to TNB, and users do not mistake WattLah for an official channel. |
 | O2, O3 / RAI4 | Personal data protection | Instruction-following capability | Run PII; inspect outgoing model payloads and stored logs. | Identifiers transmitted or stored | 0 | Users can ask about their bill without exposing personal data. |
 | O3 / NFR3 | Response latency | Cost and latency | Log end to end time across all sets. | p90 latency | < 8 s | Answers arrive fast enough for a quick check when a bill arrives. |
-| O3 / NFR4 | Cost per query | Cost and latency | Record tokens per request across all sets; price at the provider's published rate on the test date. | Cost per 100 queries | < US$1.00 | The tool runs on a student budget, and a free public version stays realistic. |
+| O3 / NFR4 | Cost per query | Cost and latency | Record tokens per request across all sets; price at the provider's published rate on the test date. Local model calls count as zero. | Cost per 100 queries | < US$1.00 | The tool runs on a student budget, and a free public version stays realistic. |
 
 Personal data protection is a system control rather than a model capability. It is grouped under instruction-following because the test checks whether the system obeys a defined rule.
 
@@ -33,16 +33,20 @@ NFR5 (monthly update without code change) is evaluated by the controlled update 
 | SCOPE | Out of scope requests: disputes, meter faults, ToU, Sabah and Sarawak, solar, AFA forecasts, legal or financial advice. | ≥ 20 (half BM, half English) | FR7, FR8, RAI5 |
 | PII | Questions containing seeded fake names, addresses, account, IC and phone numbers, including numbers that look like kWh readings. | ≥ 15 | RAI4 |
 
-- Expected values in REF-CALC and REF-PAIR are produced outside Wattlah, so the calculator is never graded against itself.
+- Expected values in REF-CALC and REF-PAIR are produced outside WattLah, so the calculator is never graded against itself.
 - All sets and results are kept in `evaluation/`. Real bills are stored only after identifiers are removed.
 
 ## Reflection (Part B)
 
-**Which evaluation criterion is most important for determining whether Wattlah will be useful to its intended users? Why?**
+**Which evaluation criterion is most important for determining whether WattLah will be useful to its intended users? Why?**
 
-Calculation accuracy. The first thing a user does is hold Wattlah's answer next to their actual bill. If one ringgit figure does not match, the explanation around it loses all credibility, and if the user does not notice the mismatch, they act on a wrong number, which is worse. It is also the main thing that separates Wattlah from a general chatbot. Applicable billing period is a close second, because a correct calculation done with the wrong month's AFA rate is still a wrong bill.
+Calculation accuracy. The first thing a user does is hold WattLah's answer next to their actual bill. If one ringgit figure does not match, the explanation around it loses all credibility, and if the user does not notice the mismatch, they act on a wrong number, which is worse. It is also the main thing that separates WattLah from a general chatbot. Applicable billing period is a close second, because a correct calculation done with the wrong month's AFA rate is still a wrong bill.
 
 ## Changes in Version 1.1 (22 November 2026)
 
-- **REF-CALC built:** 64 reference bills. Expected values come from TNB's published calculator method rather than a hand checked spreadsheet, so they are still produced outside Wattlah and are closer to what TNB actually bills.
+- **REF-CALC built:** 64 reference bills. Expected values come from TNB's published calculator method rather than a hand checked spreadsheet, so they are still produced outside WattLah and are closer to what TNB actually bills.
 - **PERIOD:** the 1 January 2027 reversion was not an official rule; tests now check that both 2027 scenarios are shown and labelled.
+
+## Changes in Version 1.2 (22 November 2026)
+
+- **NFR4:** local model calls count as zero cost (ADR9). Threshold unchanged.

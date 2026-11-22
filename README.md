@@ -1,8 +1,8 @@
-# Wattlah
+# WattLah: Your TNB Power Bill Guide and Decoder
 
 **Semak bil elektrik anda.**
 
-> Wattlah explains Malaysian household electricity bills in BM and English. It grounds every answer in official tariff documents and computes every figure with a verified calculator.
+> WattLah explains Malaysian household electricity bills in BM and English. It grounds every answer in official tariff documents and computes every figure with a verified calculator.
 
 *Independent student project for SAIA3113 AI Engineering, UTM. Not affiliated with or endorsed by Tenaga Nasional Berhad (TNB).*
 
@@ -10,7 +10,7 @@
 
 Since July 2025, a domestic TNB bill combines energy, capacity, network and retail charges, an Energy Efficiency Incentive, a 1.6% Renewable Energy Fund levy (KWTBB), service tax, and an Automatic Fuel Adjustment (AFA) that changes every month. On top of that, relief thresholds change at short notice. When a bill rises, households cannot easily tell whether the cause is usage, the AFA, or crossing a threshold.
 
-General chatbots go out of date and can get the arithmetic wrong, while calculators give a number without explaining it. Wattlah combines retrieval over dated official documents with a deterministic calculator, so it can explain the change correctly and show its working. The AI handles what rules cannot: free form questions in BM, English or a mix of both, matched to the right rule for the right billing month.
+General chatbots go out of date and can get the arithmetic wrong, while calculators give a number without explaining it. WattLah combines retrieval over dated official documents with a deterministic calculator, so it can explain the change correctly and show its working. The AI handles what rules cannot: free form questions in BM, English or a mix of both, matched to the right rule for the right billing month.
 
 ## Evidence of the Problem
 
@@ -21,6 +21,7 @@ General chatbots go out of date and can get the arithmetic wrong, while calculat
 
 - **TNB itemised bill (since July 2025):** lists each charge but does not explain why the total changed or answer questions ([Malay Mail, 1 Jul 2025](https://www.malaymail.com/news/malaysia/2025/07/01/new-tnb-itemised-electricity-bills-will-help-consumers-better-understand-manage-energy-use/182364)).
 - **Third party bill calculators:** compute an estimate, but the user must look up the month's AFA rate. ToU is excluded and nothing is explained ([Paul Tan TNB Bill Calculator](https://paultan.org/tnb-calculator/)).
+- **TNB's own bill calculator (myTNB tariff page):** estimates a bill from kWh and billing dates with TNB's published method, including the monthly AFA. It states the result is an estimate, and it does not explain each charge, answer questions or cite sources ([myTNB tariff page](https://www.mytnb.com.my/tariff/index.html)). WattLah uses this method as its calculation reference (64 of 64 reference bills match).
 - **RAG chatbot for PLN complaints (Putro et al., 2025):** shows retrieval in a local language works for a utility. However, it is grounded in complaint records rather than tariff rules, and BLEU and ROUGE scores cannot catch a wrong amount ([Jurnal Infomedia](https://e-jurnal.pnl.ac.id/infomedia/article/view/7169)).
 - **General purpose AI assistants:** have a fixed knowledge cutoff and compute numbers inside the model. In our Week 1 lab, Claude reported a cutoff of about June 2026, before the September threshold change.
 

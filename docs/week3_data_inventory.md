@@ -1,4 +1,4 @@
-# Week 3 Data Inventory: Wattlah
+# Week 3 Data Inventory: WattLah
 
 Version: 1.0 (16 November 2026)
 Requirement IDs refer to [week2_requirements.md](week2_requirements.md). Notebook: [notebooks/week3_pipeline.ipynb](../notebooks/week3_pipeline.ipynb).

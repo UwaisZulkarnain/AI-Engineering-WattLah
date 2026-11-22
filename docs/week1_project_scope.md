@@ -1,12 +1,12 @@
-# Week 1 Project Scope: Wattlah
+# Week 1 Project Scope: WattLah
 
 *Semak bil elektrik anda*
 
 | Field | Details |
 |---|---|
-| **Project Name** | Wattlah: *Semak bil elektrik anda* (check your electricity bill) |
+| **Project Name** | WattLah: *Semak bil elektrik anda* (check your electricity bill) |
 | **Domain** | Household energy and consumer utilities: domestic electricity billing in Peninsular Malaysia (TNB) |
-| **Problem Statement** | Since July 2025, a domestic TNB bill is built from several parts: energy, capacity and network charges, a retail charge, service tax, and an Automatic Fuel Adjustment (AFA) that changes every month. On top of that, relief rules shift at short notice. The exemption threshold moved from 600 kWh to 800 kWh for September to December 2026 and reverts on 1 January 2027. When a bill rises, most households cannot tell whether the cause is their usage, the AFA, or crossing a threshold. The answer exists, but it is spread across tariff schedules, press releases and the bill itself. Wattlah is a bilingual (BM and English) assistant that answers "why did my bill change?" by grounding every explanation in official tariff documents and computing every figure with a deterministic calculator, so the model explains but never guesses numbers. AI is needed because the hard part is not the arithmetic, which a calculator handles, but understanding free form questions in BM, English or a mix of both, matching them to the right rule for the right billing month, and explaining the result in plain language. A fixed rule based tool or a keyword search cannot do that. |
+| **Problem Statement** | Since July 2025, a domestic TNB bill is built from several parts: energy, capacity and network charges, a retail charge, service tax, and an Automatic Fuel Adjustment (AFA) that changes every month. On top of that, relief rules shift at short notice. The exemption threshold moved from 600 kWh to 800 kWh for September to December 2026, and what applies from 1 January 2027 has not been decided. When a bill rises, most households cannot tell whether the cause is their usage, the AFA, or crossing a threshold. The answer exists, but it is spread across tariff schedules, press releases and the bill itself. WattLah is a bilingual (BM and English) assistant that answers "why did my bill change?" by grounding every explanation in official tariff documents and computing every figure with a deterministic calculator, so the model explains but never guesses numbers. AI is needed because the hard part is not the arithmetic, which a calculator handles, but understanding free form questions in BM, English or a mix of both, matching them to the right rule for the right billing month, and explaining the result in plain language. A fixed rule based tool or a keyword search cannot do that. |
 
 ## Evidence of the Problem
 
@@ -33,7 +33,11 @@ Key limitation: Computes an estimate, but the user must find and enter the month
 Source: I. P. H. Putro et al., "Retrieval Augmented Generation (RAG) Chatbot for Handling Customer Complaints in the Energy Sector", *Jurnal Infomedia*, 10(2), 105 to 111, 2025. https://e-jurnal.pnl.ac.id/infomedia/article/view/7169
 Key limitation: Shows that retrieval in a local language works for a utility (92% of answers rated helpful), but it is grounded in past complaint records rather than tariff rules. It was evaluated with BLEU and ROUGE, which measure wording overlap and cannot catch a wrong ringgit amount.
 
-**4. General purpose AI assistants (ChatGPT, Claude)**
+**4. TNB's own bill calculator (myTNB tariff page)**
+Source: https://www.mytnb.com.my/tariff/index.html (retrieved 17 November 2026)
+Key limitation: Estimates a bill from kWh and billing dates with TNB's published method, including the monthly AFA, and states that the result is an estimate. It does not explain each charge, answer follow up questions or cite the rule behind a figure.
+
+**5. General purpose AI assistants (ChatGPT, Claude)**
 Source: Own observation, Week 1 Lab Part A (Claude.ai, Figure A1.3).
 Key limitation: Their knowledge has a fixed cutoff (Claude reported about June 2026), so without live search they cannot know the September 2026 threshold change. They also compute arithmetic inside the model, with no guarantee the numbers are right.
 
@@ -91,7 +95,7 @@ Control: run the same test set in both languages and report the gap.
 **Risk 4: Personal data.** Users paste or upload bills containing name, address and account number, which falls under the PDPA.
 Control: do not store uploads, redact identifiers before processing, and warn users before upload.
 
-**Risk 5: Mistaken authority.** Users treat Wattlah as an official TNB channel and rely on it in a billing dispute.
+**Risk 5: Mistaken authority.** Users treat WattLah as an official TNB channel and rely on it in a billing dispute.
 Control: a clear "not affiliated with TNB" notice, and disputes are always referred to official TNB channels.
 
-*Updated 22 November 2026: Risk 1 example corrected. The earlier example assumed the 800 kWh relief reverts on 1 January 2027, which no official source states (see [week2_requirements.md](week2_requirements.md), version 1.1).*
+*Updated 22 November 2026: Risk 1 example and the problem statement corrected, and TNB's own bill calculator added as existing approach 4. The earlier example assumed the 800 kWh relief reverts on 1 January 2027, which no official source states (see [week2_requirements.md](week2_requirements.md), version 1.1).*

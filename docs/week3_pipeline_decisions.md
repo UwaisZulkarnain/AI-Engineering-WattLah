@@ -1,9 +1,9 @@
-# Week 3 Pipeline Decisions, Stage Contracts and Traceability: Wattlah
+# Week 3 Pipeline Decisions, Stage Contracts and Traceability: WattLah
 
 Version: 1.0 (16 November 2026)
 Builds on: [week2_requirements.md](week2_requirements.md), [week2_architecture_decisions.md](week2_architecture_decisions.md). Sources: [week3_data_inventory.md](week3_data_inventory.md). Notebook: [notebooks/week3_pipeline.ipynb](../notebooks/week3_pipeline.ipynb).
 
-![Wattlah Week 3 V1 data pipeline](week3_pipeline_diagram.png)
+![WattLah Week 3 V1 data pipeline](week3_pipeline_diagram.png)
 
 Editable source: [week3_pipeline_diagram.drawio](week3_pipeline_diagram.drawio)
 

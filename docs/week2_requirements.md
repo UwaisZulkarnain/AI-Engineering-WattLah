@@ -1,8 +1,8 @@
-# Week 2 Requirements Specification: Wattlah
+# Week 2 Requirements Specification: WattLah
 
 *Semak bil elektrik anda*
 
-Version: 1.1 (22 November 2026). Version 1.0 was submitted on 26 October 2026; changes are listed at the end.
+Version: 1.2 (22 November 2026). Version 1.0 was submitted on 26 October 2026; changes are listed at the end.
 Builds on: [Week 1 project scope](week1_project_scope.md)
 Test sets named below (REF-CALC, REF-PAIR, PERIOD, QA, SCOPE, PII) are defined in [week2_evaluation_criteria.md](week2_evaluation_criteria.md).
 
@@ -23,7 +23,7 @@ Test sets named below (REF-CALC, REF-PAIR, PERIOD, QA, SCOPE, PII) are defined i
 | **Important Constraints** | - Solo developer, one semester.<br>- Low or zero budget: free or low cost model service tiers.<br>- Public documents only; no access to TNB customer systems or data.<br>- AFA changes every month and relief rules change at short notice, so sources must carry effective dates.<br>- A meter reading period rarely matches a calendar month, and relief can be credited on a later bill. Usage, thresholds and AFA rates are split across calendar months by days, following the calculation method TNB publishes, not assumed.<br>- Bills carry name, address and account number, which fall under the PDPA.<br>- Source files (PDFs and myTNB data files) are not redistributed; the repo keeps a source list with hashes only.<br>- Must not imply any affiliation with TNB. |
 | **Explicit Out of Scope Tasks** | - Time of Use (ToU) tariff<br>- Sabah (SESB) and Sarawak (SEB) customers<br>- Commercial, industrial and agricultural tariffs<br>- Solar, net metering (NEM) and self consumption schemes<br>- Billing months before July 2025 (pre RP4)<br>- Bill photo or PDF upload (deferred to V2)<br>- Billing disputes, meter faults, disconnection and account matters (referred to official TNB channels)<br>- Forecasting future AFA rates or future bills, including bills that need an AFA rate not yet declared (TNB's projection is shown only as a forecast)
 - Billing periods shorter than 28 days, because the service tax rule for them is not fully specified in the sources<br>- Legal, financial or energy saving investment advice |
-| **Evaluation Focus** | Does Wattlah give bill figures that match the official tariff to the sen, explain them with correct, cited sources for the right billing month, at comparable quality in BM and English, while refusing out of scope requests and protecting personal data, within an acceptable response time? |
+| **Evaluation Focus** | Does WattLah give bill figures that match the official tariff to the sen, explain them with correct, cited sources for the right billing month, at comparable quality in BM and English, while refusing out of scope requests and protecting personal data, within an acceptable response time? |
 
 **Changes from Week 1:** O2 now names scope control as a guardrail, and O3 adds scope handling, so that RAI5 traces to an objective. V1 input is limited to typed values; bill upload moves to V2 (see ADR5 in [week2_architecture_decisions.md](week2_architecture_decisions.md)).
 
@@ -38,7 +38,7 @@ Test sets named below (REF-CALC, REF-PAIR, PERIOD, QA, SCOPE, PII) are defined i
 | FR5 | Give a source reference (issuer, document title and date) for every rule or rate used in an answer. | Present information as coming from an official source when no source supports it. |
 | FR6 | Accept questions in BM, English or a mix of both, and answer in the language of the question unless the user asks otherwise. | - |
 | FR7 | Decline out of scope requests (Section 0) and redirect the user: billing disputes, meter faults and account matters to official TNB channels; other topics to an appropriate source. | Present itself as TNB or an official TNB channel, or give legal or financial advice. |
-| FR8 | Show a notice at the start of each session that Wattlah is independent of TNB and that users should not enter personal details. | Require a login, or ask for an account number, IC number, name or address. |
+| FR8 | Show a notice at the start of each session that WattLah is independent of TNB and that users should not enter personal details. | Require a login, or ask for an account number, IC number, name or address. |
 
 ## Section 2: Non-Functional Requirements
 
@@ -47,14 +47,14 @@ Test sets named below (REF-CALC, REF-PAIR, PERIOD, QA, SCOPE, PII) are defined i
 | NFR1 | Correctness (calculation) | Bill amounts shall match the published tariff for every supported case: domestic general tariff, Peninsular Malaysia, billing periods from July 2025 in which every month has a declared AFA rate. | Run REF-CALC (64 reference bills) and compare each component and the total with the reference value. | Share of cases within tolerance (each component ±RM0.01, total ±RM0.05) | 100% |
 | NFR2 | Correctness (explanation) | Explanations shall be consistent with the cited official documents. | Score the QA set claim by claim against the cited documents using a defined rubric. | Grounded response rate | ≥ 90% |
 | NFR3 | Performance | Answers, including retrieval and calculation, shall stay within the agreed latency target. | Log end to end time, from submitting the question to the complete answer, across all evaluation sets. | p90 latency (90% of answers are faster than this) | < 8,000 ms |
-| NFR4 | Cost | Model service cost shall stay within a student budget. | Record tokens per request across all evaluation sets and price them at the provider's published rate on the test date. | Cost per 100 queries | < US$1.00 |
+| NFR4 | Cost | Model service cost shall stay within a student budget. | Record tokens per request across all evaluation sets and price them at the provider's published rate on the test date. Local model calls count as zero. | Cost per 100 queries | < US$1.00 |
 | NFR5 | Maintainability | A newly published AFA rate or relief change shall be added as data, without changing code. | Controlled update test: add one new month's AFA notice and rate, then rerun the affected REF-CALC cases. | Time to update; code files changed | ≤ 10 min; 0 files |
 
 **Why these thresholds**
 - **NFR1 at 100%:** the arithmetic is deterministic code, so any miss is a defect, not acceptable variance. The ±RM0.05 tolerance on the total allows for rounding of line items on the printed bill.
 - **NFR2 at 90%:** explanations are generated text. Figures are already held to 100% by NFR1 and RAI2, so 90% is the V1 bar for the wording around them.
-- **NFR3 at 8 s:** each answer needs retrieval, a calculation step and generation. EduAdvisor's 3 s target has no calculation step. To be revisited once the first measurements exist.
-- **NFR4 at US$1 per 100 queries:** keeps a full evaluation run (about 150 queries) under US$2.
+- **NFR3 at 8 s:** each answer needs retrieval, a calculation step and generation. EduAdvisor's 3 s target has no calculation step. Kept at 8 s for V1 and measured from Topic 5 on the local model; slow local answers can use the cloud fallback (ADR9).
+- **NFR4 at US$1 per 100 queries:** keeps a full evaluation run (about 150 queries) under US$2. With a local open model and a free-tier cloud fallback (ADR9) the expected cost is near zero; it is still measured, because free-tier limits or a move to a paid tier would change it.
 - **NFR5 at 10 min:** AFA changes every month, so updating must be routine data entry, not a code release.
 
 ## Section 3: Responsible AI Requirements
@@ -84,3 +84,7 @@ Driven by the Week 4 data quality audit ([week4_data_quality_report.md](week4_da
 - **Charges added to the domain and FR1:** Energy Efficiency Incentive and KWTBB, which were missing from v1.0.
 - **Undeclared AFA months and short periods:** a bill that needs an undeclared AFA rate, and billing periods under 28 days, are out of scope; a projection is shown only as a forecast.
 - **NFR1:** REF-CALC now has 64 reference bills in `evaluation/reference_bills.csv`.
+
+## Changes in Version 1.2 (22 November 2026)
+
+- **NFR3, NFR4:** measurement and rationale updated for ADR9 (local open model with a free-tier cloud fallback). Thresholds unchanged.
