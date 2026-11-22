@@ -15,7 +15,7 @@ General chatbots go out of date and can get the arithmetic wrong, while calculat
 ## Evidence of the Problem
 
 - **AFA flipped from rebates to surcharges in 2026.** Customers had nine months of rebates, then surcharges from May 2026 after the West Asia crisis pushed up fuel costs, reaching +3.67 sen/kWh in September 2026. TNB issued a press release to address bill concerns ([TNB, 15 Sep 2026](https://www.tnb.com.my/assets/press_releases/20260915_23_bi.pdf)).
-- **The relief rules move faster than people can follow.** The exemption threshold was 600 kWh on 15 September 2026, then raised to 800 kWh two days later for September to December 2026 ([Bernama, 2 Oct 2026](https://www.bernama.com/bm/news.php?id=2614501)). About 8 million households are now covered, while those above the threshold stay exposed ([The Vibes, 15 Oct 2026](https://www.thevibes.com/articles/news/128374/global-fuel-shock-drives-electricity-costs-but-8-million-malaysian-households-remain-protected-dpm-ii)).
+- **The relief rules move faster than people can follow.** The exemption threshold was 600 kWh on 15 September 2026, then raised to 800 kWh three days later, on 18 September, for September to December 2026 ([TNB, 18 Sep 2026](https://www.tnb.com.my/assets/press_releases/20260918_24_bm.pdf); [The Star, 19 Nov 2026](https://www.thestar.com.my/news/nation/2026/11/19/power-bills-feel-the-heat-of-global-crises-says-fadillah)). About 8 million households are now covered, while those above the threshold stay exposed ([The Vibes, 15 Oct 2026](https://www.thevibes.com/articles/news/128374/global-fuel-shock-drives-electricity-costs-but-8-million-malaysian-households-remain-protected-dpm-ii)).
 
 ## Initial Related Work / Existing Approaches
 

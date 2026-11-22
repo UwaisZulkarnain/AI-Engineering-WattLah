@@ -13,9 +13,10 @@
 **Evidence 1:** AFA flipped from rebates to surcharges in 2026. Customers received rebates for nine months (August 2025 to April 2026); surcharges began in May 2026 after generation costs rose following the West Asia crisis, reaching +3.67 sen/kWh in September 2026. TNB issued a press release specifically to address bill concerns.
 Source: TNB press release, "Addressing Electricity Bill Concerns: AFA Mechanism Ensures Transparency and Fair Cost Sharing Since July 2025", 15 September 2026. https://www.tnb.com.my/assets/press_releases/20260915_23_bi.pdf
 
-**Evidence 2:** The rules move faster than people can follow. On 15 September 2026, TNB stated the exemption threshold as 600 kWh. Two days later, the government raised it to 800 kWh for September to December 2026, with credits applied retroactively on October bills. By 15 October 2026, about 8 million Peninsular households were covered, while households above 800 kWh remain fully exposed to AFA. National media ran explainers asking why bills were suddenly higher.
+**Evidence 2:** The rules move faster than people can follow. On 15 September 2026, TNB stated the exemption threshold as 600 kWh. Three days later, on 18 September, the government raised it to 800 kWh for September to December 2026, with credits applied retroactively on October bills. By 15 October 2026, about 8 million Peninsular households were covered, while households above 800 kWh remain fully exposed to AFA. National media ran explainers asking why bills were suddenly higher.
 Sources:
-- Bernama, TNB bill adjustment for users up to 800 kWh, 2 October 2026. https://www.bernama.com/bm/news.php?id=2614501
+- TNB press release, "Aras perlindungan bil elektrik dinaikkan kepada 800kWj", 18 September 2026. https://www.tnb.com.my/assets/press_releases/20260918_24_bm.pdf
+- The Star, "Power bills feel the heat of global crises, says Fadillah", 19 November 2026. https://www.thestar.com.my/news/nation/2026/11/19/power-bills-feel-the-heat-of-global-crises-says-fadillah
 - The Vibes, DPM on 8 million households protected, 15 October 2026. https://www.thevibes.com/articles/news/128374/global-fuel-shock-drives-electricity-costs-but-8-million-malaysian-households-remain-protected-dpm-ii
 - Malay Mail, "Why is my TNB electricity bill suddenly high? The AFA fuel surcharge explained", 21 July 2026. https://www.malaymail.com/news/malaysia/2026/07/21/why-is-my-tnb-electricity-bill-suddenly-high-the-afa-fuel-surcharge-explained/227856
 
